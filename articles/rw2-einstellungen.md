@@ -35,6 +35,7 @@ Der Service wird beim Start des Rahmenwerk initialisiert und steht damit unmitte
 
 Der Service selbst wird durch folgende Schnittstelle definiert:
 
+```java
     public interface Einstellungen {
     
         Object getValue(final EinstellungsAdresse adresse) throws IOException;
@@ -52,6 +53,7 @@ Der Service selbst wird durch folgende Schnittstelle definiert:
         void addEinstellungsAvailabilityListener(final EinstellungAvailabilityListener listener);
         void removeEinstellungsAvailabilityListener(final EinstellungAvailabilityListener listener);
     }
+```
  
 #### getValue - Lesen einer definierten Einstellung
 
@@ -78,6 +80,7 @@ Optional kann die Anmeldung auf spezielle Typen erfolgen, das ist aber erst dann
 
 Ein Listener für Einstellungen implementiert folgende Schnitstelle 
 
+```java
     public interface EinstellungChangeListener {
 
         /**
@@ -104,6 +107,7 @@ Ein Listener für Einstellungen implementiert folgende Schnitstelle
         */
         void einstellungEntfernt(final EinstellungsEvent event);
     }
+```
 
 und wird damit benachrichtigt über:
 
@@ -134,7 +138,7 @@ Die Einstellungsadresse spezifiziert, auf welche Einstellung zugegriffen werden 
 
 Momentan wird eine Einstellungsadresse über den Konstruktor:
 
-```
+```java
     public EinstellungsAdresse(final String typ, final String id,
             final EinstellungOwnerType ownerType, final String pid,
             final EinstellungLocation location)
@@ -155,6 +159,7 @@ die ID unter der die Einstellung innerhalb des Einstellungsspeichers hinterlegt 
 #### ownerType
 beschreibt, für wen die Einstellung gültig ist. Mit dem enum stehen folgende Werte zur Verfügung:
 
+```java
     public enum EinstellungOwnerType {
 
         /** Systemweite (allgemeine) Einstellung. */
@@ -164,7 +169,7 @@ beschreibt, für wen die Einstellung gültig ist. Mit dem enum stehen folgende Wer
         /** Einstellung ist einem Benutzer zugeordnet. */
         BENUTZER;
     }
-    
+```    
 Zu beachten ist, das die Einstellungen für Benutzerklassen (noch) nicht unterstützt werden.
 
 #### pid
@@ -173,6 +178,7 @@ ist die PID des Benutzers oder der Benutzerklasse für den die Einstellung gültig
 #### location
 ist der Ort, an dem die Einstellung gespeichert werden soll. Mit dem enum stehen folgende Werte zur Verfügung:
 
+```java
     public enum EinstellungLocation {
     
         /** Einstellung wird netzwerkweit (als Parameter in Datenverteiler) gespeichert. */
@@ -181,6 +187,7 @@ ist der Ort, an dem die Einstellung gespeichert werden soll. Mit dem enum stehen
         /** Einstellung wird lokal gespeichert. */
         LOKAL;
     } 
+```
 
 ## Erweiterte Funktionalität - EinstellungsFactory
 
@@ -190,6 +197,7 @@ Wenn Objekte anderer Typen direkt im Einstellungsspeicher abgelegt werden sollen
 
 Das Interface für die Factory wird wie folgt beschrieben:
 
+```java
     public interface EinstellungsFactory {
 
         /**
@@ -223,6 +231,7 @@ Das Interface für die Factory wird wie folgt beschrieben:
         */
         Object deserialisiere(final String daten) throws IOException;
     }
+```
     
 Die mit der Funktion *getTyp* gelieferte ID muss dann beim Lesen und Schreiben der Einstellung dem in der *Einstellungsadresse* angegebenen Typ entsprechen. 
 
