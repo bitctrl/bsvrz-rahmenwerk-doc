@@ -120,6 +120,7 @@ und wird damit benachrichtigt über:
 Die Funktion erlaubt die Registrierung von Listenern die über die Verfügbarkeit der
 netzwerkweiten Einstellungsspeicher informieren.
 
+```java
     public interface EinstellungAvailabilityListener {
     
         /** der Einstellungsspeicher ist verfügbar. */
@@ -128,6 +129,7 @@ netzwerkweiten Einstellungsspeicher informieren.
         /** der Einstellungsspeicher ist nicht verfügbar. */
         void disabled();
     }
+```
 
 Alle oben aufgeführten Einstellungsspeicher sind nur verfügbar, wenn eine Datenverteilerverbindung besteht.
 Im Offline-Betrieb ist nur der allgemeine lokale Einstellungsspeicher verfügbar, da eine Zuordnung zu Benutzerklassen bzw. Benutzern auf Grund der fehlenden Authentifizierung durch die Datenverteilerkonfiguration nicht möglich ist. 
