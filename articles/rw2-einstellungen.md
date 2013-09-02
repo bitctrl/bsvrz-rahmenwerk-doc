@@ -7,12 +7,15 @@ Comment: Verwendung des Einstellungsspeichers im Rahmenwerk 2.0
 
 ## Hintergrund
 
-Das Rahmenwerk bietet die Möglichkeit, Einstellungen die allgemein oder nutzerspezifisch gelten zu speichern und wieder abzurufen.
+Das Rahmenwerk bietet die MÃ¶glichkeit, Einstellungen die allgemein oder nutzerspezifisch gelten zu speichern und wieder abzurufen.
 
-Einstellungen können entweder lokal hinterlegt oder netzwerkweit abgespeichert werden. 
-Zum netzwerkweiten Speichern von Einstellungen werden die Daten in den bisher verwendeten Datenverteiler-Attributgruppen "atg.benutzerEinstellungenOberflächeNetzweit" bzw. "atg.globaleEinstellungenOberflächeNetzweit" abgelegt. Die Attributgruppen sind einer Instanz vom Typ "Oberfläche" zugeordnet, der auch die durch den Typ "Autarke Organisationseinheit" erweitert wird.
+Einstellungen kÃ¶nnen entweder lokal hinterlegt oder netzwerkweit abgespeichert werden. 
+Zum netzwerkweiten Speichern von Einstellungen werden die Daten in den bisher verwendeten Datenverteiler-Attributgruppen 
+"atg.benutzerEinstellungenOberflÃ¤cheNetzweit" bzw. "atg.globaleEinstellungenOberflÃ¤cheNetzweit" abgelegt.
+Die Attributgruppen sind einer Instanz vom Typ "OberflÃ¤che" zugeordnet, der auch die durch den Typ "Autarke Organisationseinheit" 
+erweitert wird.
 
-Potentiell vorgesehen ist die Speicherung von Informationen für folgende Gruppierungen:
+Potentiell vorgesehen ist die Speicherung von Informationen fÃ¼r folgende Gruppierungen:
 
 - allgemeine systemweite Einstellungen
 - allgemeine lokale Einstellungen
@@ -21,21 +24,26 @@ Potentiell vorgesehen ist die Speicherung von Informationen für folgende Gruppie
 - benutzerspezifische systemweite Einstellungen
 - benutzerspezifische lokale Einstellungen
 
-Eine Reihenfolge der Überlagerung bzw. der Kombinationen der oben genannten Gruppierungen für eine bestimmte Einstellung ist nicht vorgesehen. Diese Entscheidung wird durch die jeweilige Anwendung getroffen und kann damit für jede Einstellung individuell anders sein.
+Eine Reihenfolge der Ãœberlagerung bzw. der Kombinationen der oben genannten Gruppierungen fÃ¼r eine bestimmte Einstellung 
+ist nicht vorgesehen. Diese Entscheidung wird durch die jeweilige Anwendung getroffen und kann damit fÃ¼r jede Einstellung 
+individuell anders sein.
 
-Die aktuelle Implementierung unterstützt bisher noch nicht die Speicherung der Einstellungen für Benutzerklassen, dazu sollte zunächst die Zuordnung der Einstellungen für Benutzerklassen bzw. Benutzer an die Objekte diesen Typs verschoben werden. Ein entsprechender Änderungsantrag an die NERZ wurde vorgenommen.  
+Die aktuelle Implementierung unterstÃ¼tzt bisher noch nicht die Speicherung der Einstellungen fÃ¼r Benutzerklassen, 
+dazu sollte zunÃ¤chst die Zuordnung der Einstellungen fÃ¼r Benutzerklassen bzw. Benutzer an die Objekte diesen Typs 
+verschoben werden. Ein entsprechender Ã„nderungsantrag an die NERZ wurde vorgenommen.  
 
-Der Zugriff auf Einstellungen sollte nicht direkt über die Daten aus den Attributgruppen erfolgen, stattdessen steht ein Service zur Verfügung, mit dem die erforderlichen Informationen über das Rahmenwerk gelesen bzw. geschrieben werden können.
+Der Zugriff auf Einstellungen sollte nicht direkt Ã¼ber die Daten aus den Attributgruppen erfolgen, stattdessen steht 
+ein Service zur VerfÃ¼gung, mit dem die erforderlichen Informationen Ã¼ber das Rahmenwerk gelesen bzw. geschrieben werden kÃ¶nnen.
 
 ## Der Service "Einstellungen"
 
-### Allgemeine Funktionalität
+### Allgemeine FunktionalitÃ¤t
 
-Der Service wird beim Start des Rahmenwerk initialisiert und steht damit unmittelbar den Plug-ins, die ihn verwenden wollen zur Verfügung. Der Zugriff auf die Services das Rahmenwerks ist im Kapitel "Rahmenwerk-Services" detailliert beschrieben.
+Der Service wird beim Start des Rahmenwerk initialisiert und steht damit unmittelbar den Plug-ins, die ihn verwenden 
+wollen zur VerfÃ¼gung. Der Zugriff auf die Services das Rahmenwerks ist im Kapitel "Rahmenwerk-Services" detailliert beschrieben.
 
 Der Service selbst wird durch folgende Schnittstelle definiert:
 
-```java
     public interface Einstellungen {
     
         Object getValue(final EinstellungsAdresse adresse) throws IOException;
@@ -53,34 +61,33 @@ Der Service selbst wird durch folgende Schnittstelle definiert:
         void addEinstellungsAvailabilityListener(final EinstellungAvailabilityListener listener);
         void removeEinstellungsAvailabilityListener(final EinstellungAvailabilityListener listener);
     }
-```
  
 #### getValue - Lesen einer definierten Einstellung
 
 Die Funktion liefert die mit der angegebenen Einstellungsadresse definierte Einstellung. 
 
 Wenn keine entsprechende Einstellung vorliegt, wird der Wert *null* geliefert.
-Es erfolgt keine "Vererbung" der Einstellungen, d.h. wenn nach einer benutzerdefinierten Einstellung gefragt wird, wird nicht automatisch die allgemeine EInstellung für die angegebene ID geliefert, wenn keine benutzerspezifische existiert.  
+Es erfolgt keine "Vererbung" der Einstellungen, d.h. wenn nach einer benutzerdefinierten Einstellung gefragt wird, wird nicht automatisch die allgemeine EInstellung fÃ¼r die angegebene ID geliefert, wenn keine benutzerspezifische existiert.  
 
 #### setValue - Setzen einer definierten Einstellung
 
-Die Funktion schreibt den übergebenen Einstellungswert in den Einstellungsspeicher.
+Die Funktion schreibt den Ã¼bergebenen Einstellungswert in den Einstellungsspeicher.
 
 Die Standardimplementierung des Rahmenwerks sieht lediglich Strings als Einstellungsobjekte vor.
 Sollen Objekte eines anderen Typs als Einstellungen gespeichert werden muss eine entsprechende Factory als Service im Rahmenwerk regsitriert werden.
 
 #### removeValue - Entfernen einer Einstellung
 
-Die Funktion entfernt die mit der übergebenen Adresse spezifizierte Einstellung unwiederbringlich vom Einstellungsspeicher. 
+Die Funktion entfernt die mit der Ã¼bergebenen Adresse spezifizierte Einstellung unwiederbringlich vom Einstellungsspeicher. 
 
-#### add/removeEinstellungsListener - Listener für Änderungen von Einstellungen
+#### add/removeEinstellungsListener - Listener fÃ¼r Ã„nderungen von Einstellungen
 
-Die Funktionen ermöglichen die Anmeldung von Listenern, die benachrichtigt werden, wenn sich Einstellungen ändern.
-Optional kann die Anmeldung auf spezielle Typen erfolgen, das ist aber erst dann sinnvoll, wenn Plug-ins auch Factories zum Speichern von Einstellungen, die keine Strings sind implementieren.
+Die Funktionen ermÃ¶glichen die Anmeldung von Listenern, die benachrichtigt werden, wenn sich Einstellungen Ã¤ndern.
+Optional kann die Anmeldung auf spezielle Typen erfolgen, das ist aber erst dann sinnvoll, wenn Plug-ins auch 
+Factories zum Speichern von Einstellungen, die keine Strings sind implementieren.
 
-Ein Listener für Einstellungen implementiert folgende Schnitstelle 
+Ein Listener fÃ¼r Einstellungen implementiert folgende Schnitstelle 
 
-```java
     public interface EinstellungChangeListener {
 
         /**
@@ -107,61 +114,62 @@ Ein Listener für Einstellungen implementiert folgende Schnitstelle
         */
         void einstellungEntfernt(final EinstellungsEvent event);
     }
-```
 
-und wird damit benachrichtigt über:
+und wird damit benachrichtigt Ã¼ber:
 
 - neue Einstellungen
-- geänderte Einstellungen und
+- geÃ¤nderte Einstellungen und
 - entfernte Einstellungen
 
-#### add/removeEinstellungsAvailabilityListener - Listener für die Verfügbarkeit des Einstellungs-Services
+#### add/removeEinstellungsAvailabilityListener - Listener fÃ¼r die VerfÃ¼gbarkeit des Einstellungs-Services
 
-Die Funktion erlaubt die Registrierung von Listenern die über die Verfügbarkeit der
+Die Funktion erlaubt die Registrierung von Listenern die Ã¼ber die VerfÃ¼gbarkeit der
 netzwerkweiten Einstellungsspeicher informieren.
 
-```java
     public interface EinstellungAvailabilityListener {
     
-        /** der Einstellungsspeicher ist verfügbar. */
+        /** der Einstellungsspeicher ist verfï¿½gbar. */
         void available();
     
-        /** der Einstellungsspeicher ist nicht verfügbar. */
+        /** der Einstellungsspeicher ist nicht verfï¿½gbar. */
         void disabled();
     }
-```
 
-Alle oben aufgeführten Einstellungsspeicher sind nur verfügbar, wenn eine Datenverteilerverbindung besteht.
-Im Offline-Betrieb ist nur der allgemeine lokale Einstellungsspeicher verfügbar, da eine Zuordnung zu Benutzerklassen bzw. Benutzern auf Grund der fehlenden Authentifizierung durch die Datenverteilerkonfiguration nicht möglich ist. 
+Alle oben aufgefÃ¼hrten Einstellungsspeicher sind nur verfÃ¼gbar, wenn eine Datenverteilerverbindung besteht.
+Im Offline-Betrieb ist nur der allgemeine lokale Einstellungsspeicher verfÃ¼gbar, da eine Zuordnung zu Benutzerklassen
+bzw. Benutzern auf Grund der fehlenden Authentifizierung durch die Datenverteilerkonfiguration nicht mÃ¶glich ist. 
   
 ### Die Einstellungsadresse
 
 Die Einstellungsadresse spezifiziert, auf welche Einstellung zugegriffen werden soll.
 
-Momentan wird eine Einstellungsadresse über den Konstruktor:
+Momentan wird eine Einstellungsadresse Ã¼ber den Konstruktor:
 
-```java
     public EinstellungsAdresse(final String typ, final String id,
             final EinstellungOwnerType ownerType, final String pid,
             final EinstellungLocation location)
-```
             
-erzeugt. Zusätzliche Convenience-Funktionen sind geplant.
+erzeugt. ZusÃ¤tzliche Convenience-Funktionen sind geplant.
 
 Die Parameter des Konstruktors haben folgende Bedeutung:
 
 #### typ 
-der Objekttyp mit dem Einstellungen abgespeichert werden ist prinzipiell freigestellt und wird mit dem Parameter "typ" übergeben. Standardmäßig werden alle Parameter als "String" abgelegt. Wenn für den Parameter "typ" der Wert "*null*" übergeben wird, wird der Parametertyp auf "java.lang.String" gesetzt.
+der Objekttyp mit dem Einstellungen abgespeichert werden ist prinzipiell freigestellt und wird mit dem 
+Parameter "typ" Ã¼bergeben. StandardmÃ¤ÃŸig werden alle Parameter als "String" abgelegt. 
+Wenn fÃ¼r den Parameter "typ" der Wert *null* Ã¼bergeben wird, wird der Parametertyp auf "java.lang.String" gesetzt.
 
-Für jeden Typ muss eine entsprechende Factory als OSGI-Service registriert werden, die die Serialisierung und Deserialisierung des Einstellungsobjekts implementiert. Mit dem Rahmenwerk mitgeliefert wird die Factory für den Typ "java.lang.String"!
+FÃ¼r jeden Typ muss eine entsprechende Factory als OSGI-Service registriert werden, die die Serialisierung
+und Deserialisierung des Einstellungsobjekts implementiert. Mit dem Rahmenwerk mitgeliefert wird die Factory
+fÃ¼r den Typ "java.lang.String"!
 
 #### id
-die ID unter der die Einstellung innerhalb des Einstellungsspeichers hinterlegt ist. Die Wahl der ID ist nicht weiter festgelegt. Es sollte jedoch beachtet wedren, das die Gültigkeit für das gesamte System besteht und das eine möglichst eindeutige ID gewählt werden sollte bspw. unter Einbeziehung der ID des Plug-ins von dem eine Einstellung verwendet wird.
+die ID unter der die Einstellung innerhalb des Einstellungsspeichers hinterlegt ist. Die Wahl der ID ist nicht weiter festgelegt. 
+Es sollte jedoch beachtet wedren, das die GÃ¼ltigkeit fÃ¼r das gesamte System besteht und das eine mÃ¶glichst eindeutige 
+ID gewÃ¤hlt werden sollte bspw. unter Einbeziehung der ID des Plug-ins von dem eine Einstellung verwendet wird.
 
 #### ownerType
-beschreibt, für wen die Einstellung gültig ist. Mit dem enum stehen folgende Werte zur Verfügung:
+beschreibt, fÃ¼r wen die Einstellung gÃ¼ltig ist. Mit dem enum stehen folgende Werte zur VerfÃ¼gung:
 
-```java
     public enum EinstellungOwnerType {
 
         /** Systemweite (allgemeine) Einstellung. */
@@ -171,16 +179,16 @@ beschreibt, für wen die Einstellung gültig ist. Mit dem enum stehen folgende Wer
         /** Einstellung ist einem Benutzer zugeordnet. */
         BENUTZER;
     }
-```    
-Zu beachten ist, das die Einstellungen für Benutzerklassen (noch) nicht unterstützt werden.
+
+Zu beachten ist, das die Einstellungen fÃ¼r Benutzerklassen (noch) nicht unterstÃ¼tzt werden.
 
 #### pid
-ist die PID des Benutzers oder der Benutzerklasse für den die Einstellung gültig ist. Für allgemeine Einstellungen ist der Wert *null* zu übergeben.
+ist die PID des Benutzers oder der Benutzerklasse fÃ¼r den die Einstellung gÃ¼ltig ist. fÃ¼r allgemeine Einstellungen
+ist der Wert *null* zu Ã¼bergeben.
 
 #### location
-ist der Ort, an dem die Einstellung gespeichert werden soll. Mit dem enum stehen folgende Werte zur Verfügung:
+ist der Ort, an dem die Einstellung gespeichert werden soll. Mit dem enum stehen folgende Werte zur VerfÃ¼gung:
 
-```java
     public enum EinstellungLocation {
     
         /** Einstellung wird netzwerkweit (als Parameter in Datenverteiler) gespeichert. */
@@ -189,17 +197,18 @@ ist der Ort, an dem die Einstellung gespeichert werden soll. Mit dem enum stehen
         /** Einstellung wird lokal gespeichert. */
         LOKAL;
     } 
-```
 
-## Erweiterte Funktionalität - EinstellungsFactory
+## Erweiterte FunktionalitÃ¤t - EinstellungsFactory
 
-Als Einstellungen werden in der Standardimplementierung lediglich String-Objekte unterstützt. 
+Als Einstellungen werden in der Standardimplementierung lediglich String-Objekte unterstÃ¼tzt. 
 
-Wenn Objekte anderer Typen direkt im Einstellungsspeicher abgelegt werden sollen, muss in der Einstellungsadresse der zugeordnete Typ angegeben werden (das kann der Klassenname oder jede andere beliebige ID sein) und es muss eine EinstellungsFactory als Servive registriert werden, mit der das entsprechende Einstellungsobjekt serialisiert und deerialisiert werden kann.
+Wenn Objekte anderer Typen direkt im Einstellungsspeicher abgelegt werden sollen, muss in der Einstellungsadresse
+der zugeordnete Typ angegeben werden (das kann der Klassenname oder jede andere beliebige ID sein) und es muss eine 
+EinstellungsFactory als Servive registriert werden, mit der das entsprechende Einstellungsobjekt serialisiert und
+deserialisiert werden kann.
 
-Das Interface für die Factory wird wie folgt beschrieben:
+Das Interface fÃ¼r die Factory wird wie folgt beschrieben:
 
-```java
     public interface EinstellungsFactory {
 
         /**
@@ -211,30 +220,30 @@ Das Interface für die Factory wird wie folgt beschrieben:
         String getTyp();
 
         /**
-        * wandelt ein Objekt in eine String-Repräsentation um.
+        * wandelt ein Objekt in eine String-ReprÃ¤sentation um.
         * 
         * @param einstellung
         *            das zu serialisierende Einstellungsobjekt
-        * @return die Stringrepräsentation
+        * @return die StringreprÃ¤sentation
         * @throws IOException
-        *             die Serialisierung konnte nicht erfolgreich ausgeführt werden
+        *             die Serialisierung konnte nicht erfolgreich ausgefÃ¼hrt werden
         */
         String serialisiere(final Object einstellung) throws IOException;
 
         /**
-        * wandelt einen String in das gewünscht Einstellungsobjekt um.
+        * wandelt einen String in das gewÃ¼nschte Einstellungsobjekt um.
         * 
         * @param daten
         *            die Daten des Zielobjekts als String
         * @return das erzeugte Objekt
         * @throws IOException
-        *             das Objekt konnte aus dem übergebenen String nicht erzeugt
+        *             das Objekt konnte aus dem Ã¼bergebenen String nicht erzeugt
         *             werden
         */
         Object deserialisiere(final String daten) throws IOException;
     }
-```
     
-Die mit der Funktion *getTyp* gelieferte ID muss dann beim Lesen und Schreiben der Einstellung dem in der *Einstellungsadresse* angegebenen Typ entsprechen. 
+Die mit der Funktion *getTyp* gelieferte ID muss dann beim Lesen und Schreiben der Einstellung dem in
+der *Einstellungsadresse* angegebenen Typ entsprechen. 
 
 

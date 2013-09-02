@@ -10,23 +10,22 @@ Rahmenwerk 2.0 Services
 	 
 ## Allgemeines
 
-Die Funktionalität des Rahmenwerks wird im Wesentlichen über OSGI-Services bereitgestellt, 
+Die FunktionalitÃ¤t des Rahmenwerks wird im Wesentlichen Ã¼ber OSGI-Services bereitgestellt, 
 diese Ersetzen die bisher verwendeten Singletons wie DaVVerbindung, 
-EinstellungsSpeicher, OberflächenFunktionen, ...
+EinstellungsSpeicher, OberflÃ¤chenFunktionen, ...
 
 Der Zugriff auf die Services kann auf verschiedenen Wegen erfolgen:
 
 ### Service-Componente
 
-Ein Plug-in, das Rahmenwerk-Services benötigt installiert eine Komponente, die von den entsprechenden 
-Services abhängig ist. Die Komponente wird im Rahmen der Initialisierung des OSGI-Frameworks 
+Ein Plug-in, das Rahmenwerk-Services benÃ¶tigt installiert eine Komponente, die von den entsprechenden 
+Services abhÃ¤ngig ist. Die Komponente wird im Rahmen der Initialisierung des OSGI-Frameworks 
 mit den notwendigen Informationen versorgt und aktiviert, wenn alle Voraussetzungen 
-für ihren Betrieb vorliegen.
+fÃ¼r ihren Betrieb vorliegen.
  
-Beispielhaft ist hier die entsprechende Komponente im Plug-in "Migrationssupport" dargestellt, über 
+Beispielhaft ist hier die entsprechende Komponente im Plug-in "Migrationssupport" dargestellt, Ã¼ber 
 die alle grundlegenden Services des Rahmenwerks bereitgestellt werden (Datei rahmenwerkservice.xml).
 
-```xml
     <?xml version="1.0" encoding="UTF-8"?>
     <scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="de.bsvrz.buv.rw.compatibility">
         <implementation class="de.bsvrz.buv.rw.compatibility.internal.RahmenwerkService"/>
@@ -34,11 +33,10 @@ die alle grundlegenden Services des Rahmenwerks bereitgestellt werden (Datei rah
         <reference bind="bindBerechtigungen" cardinality="1..1" interface="de.bsvrz.buv.rw.basislib.berechtigung.Berechtigungen" name="Berechtigungen" policy="static" unbind="unbindBerechtigungen"/>
         <reference bind="bindEinstellungen" cardinality="1..1" interface="de.bsvrz.buv.rw.basislib.einstellungen.Einstellungen" name="Einstellungen" policy="static" unbind="unbindEinstellungen"/>
     </scr:component>
-```
 
-Der entsprechende Quellcode sieht dann folgendermaßen aus:
+Der entsprechende Quellcode sieht dann folgendermaÃŸen aus:
 
-```java
+
     public class RahmenwerkService {
 
         private static RahmenwerkService service;
@@ -97,7 +95,6 @@ Der entsprechende Quellcode sieht dann folgendermaßen aus:
             return einstellungen;
         }
     }
-```
 
 Die Komponente muss noch in in der MANIFEST.MF eingebunden werden:
 
@@ -105,58 +102,56 @@ Die Komponente muss noch in in der MANIFEST.MF eingebunden werden:
     Service-Component: OSGI-INF/rahmenwerkservice.xml
     ....     
 
-Für die Definition und Einbindung der Komponenten setehen in der Eclipse-IDE entsprechende Hilfsmittel zur Verfügung!
+FÃ¼r die Definition und Einbindung der Komponenten setehen in der Eclipse-IDE entsprechende Hilfsmittel zur VerfÃ¼gung!
  
-Das Plug-in, das die Komponente installiert, hat damit volle Kontrolle über die Verfügbarkeit 
+Das Plug-in, das die Komponente installiert, hat damit volle Kontrolle Ã¼ber die VerfÃ¼gbarkeit 
 der notwendigen Services.   
  
-### Zugriff über den Bundle-Aktivator
+### Zugriff Ã¼ber den Bundle-Aktivator
 
 Der Aktivator eines Bundles (Plug-ins) hat Zugriff auf die Service-Registry des Rahmenwerks.
-Aus dieser kann der gewünschte Service ermittelt werden. 
+Aus dieser kann der gewÃ¼nschte Service ermittelt werden. 
 
-Nachstehend wird beispielhaft der verfügbare Service "*Rahmenwerk* ermittelt:
+Nachstehend wird beispielhaft der verfÃ¼gbare Service *Rahmenwerk* ermittelt:
 
-```java
     public Rahmenwerk getRahmenwerk() {
         final IEclipseContext serviceContext = EclipseContextFactory
                 .getServiceContext(getBundle().getBundleContext());
         return serviceContext.get(Rahmenwerk.class);
-    } 
-```
+    }
+     
 Zu beachten ist dabei, dass der Zugriff auf die Services auf diesem Weg erst erfolgen kann, 
-wenn das Plug-in aktiviert wurde. Insbesondere sollten keine Klassen die über ExtensionPoints 
-instantiiert werden auf die Services zurückgreifen.
+wenn das Plug-in aktiviert wurde. Insbesondere sollten keine Klassen die Ã¼ber ExtensionPoints 
+instantiiert werden auf die Services zurÃ¼ckgreifen.
 
-### Zugriff über Dependency Injection
+### Zugriff Ã¼ber Dependency Injection
 
-Der eleganteste Weg wäre der Zugriff auf die Services wäre die Verwendung von Dependency Injection, 
+Der eleganteste Weg wÃ¤re der Zugriff auf die Services wÃ¤re die Verwendung von Dependency Injection, 
 die integraler Bestandteil der E4 Platform ist.
 
 Da jedoch auf Grund des aktuellen Status der E$ Komponenten und Entwicklungswerkzeuge, sowie im 
-Hinblick auf die möglichst hohe Kompatibilität der bestehenden BuV-Software-Komponenten, entschieden
-wurde die Eclipse RCP Platform im Kompatibilitätsmodus zu Eclipse 3 zu betreiben, stehen die 
-entsprechenden Möglichkeiten nicht vollumfänglich zur Verfügung.
+Hinblick auf die mÃ¶glichst hohe KompatibilitÃ¤t der bestehenden BuV-Software-Komponenten, entschieden
+wurde die Eclipse RCP Platform im KompatibilitÃ¤tsmodus zu Eclipse 3 zu betreiben, stehen die 
+entsprechenden MÃ¶glichkeiten nicht vollumfÃ¤nglich zur VerfÃ¼gung.
 
-Prinzipiell ist es jedoch möglich neue Plug-ins und Komponenten als Erweiterung des vorhandenen
+Prinzipiell ist es jedoch mÃ¶glich neue Plug-ins und Komponenten als Erweiterung des vorhandenen
 Applikationsmodell als reine E4 modellbasierte Bestandteile zu intergrieren oder alternativ die
-Eclipse3-Bridge aus dem E4-Tools-Projekt einzusetzen, um die Möglichkeiten des Dependency Injection-Mechanismus
+Eclipse3-Bridge aus dem E4-Tools-Projekt einzusetzen, um die MÃ¶glichkeiten des Dependency Injection-Mechanismus
 zu verwenden.
 
-Entsprechende Literatur und Online-Artikel sind in großem Umfang vorhanden, deshalb wird hier 
-nicht näher darauf eingegangen.
+Entsprechende Literatur und Online-Artikel sind in groÃŸem Umfang vorhanden, deshalb wird hier 
+nicht nÃ¤her darauf eingegangen.
 
-Nachstehend sind die grundlegenden vom Rahmenwerk bereitgestellten Services überblicksmäßig dargestellt.
+Nachstehend sind die grundlegenden vom Rahmenwerk bereitgestellten Services Ã¼berblicksmÃ¤ÃŸig dargestellt.
 
 ## Rahmenwerk
 
-Der Service stellt im Wesentlichen die Verbindung zum Datenverteilersystem zur Verfügung mit dem
-die Oberfläche verbunden werden soll.
+Der Service stellt im Wesentlichen die Verbindung zum Datenverteilersystem zur VerfÃ¼gung mit dem
+die OberflÃ¤che verbunden werden soll.
 
 Daneben werden einige Informationen zur allgemeinen Anwendungsumgebung geliefert, 
-die optional auch im Offline-Betrieb zur Verfügung stehen. 
+die optional auch im Offline-Betrieb zur VerfÃ¼gung stehen. 
 
-```java	
     public interface Rahmenwerk {
 
         String JOB_FAMILY = "RahmenwerkJobs";
@@ -177,18 +172,16 @@ die optional auch im Offline-Betrieb zur Verfügung stehen.
         SystemObject getOberflaechenObject();
         RwToolBarManager getRwToolBarManager();
     }
-```
 
 ### isOnline und getDavVerbindung
-dient zur Überprüfung und zum ermitteln der potentiell vorhandenen Datenverteilerverbindung.
-Der Service bietet außerdem die Möglichkeit, sich für die Benachrichtigung über den Zustandswechsel 
+dient zur ÃœberprÃ¼fung und zum ermitteln der potentiell vorhandenen Datenverteilerverbindung.
+Der Service bietet auÃŸerdem die MÃ¶glichkeit, sich fÃ¼r die Benachrichtigung Ã¼ber den Zustandswechsel 
 der Datenverteilerverbindung zu registrieren. 
 
 ### add/removeDavVerbindungsListener
-dient zur Anmeldung eines Listeners, der über den Status der Datenverteilerverbindung des
+dient zur Anmeldung eines Listeners, der Ã¼ber den Status der Datenverteilerverbindung des
 Rahmenwerks informiert wird.
 
-```java
     public interface DavVerbindungsListener {
 
         /**
@@ -210,7 +203,7 @@ Rahmenwerks informiert wird.
         /**
         * eine Datenverteilerverbindung soll getrennt werden. Der Listener kann
         * hier ein Veto einlegen, sollte aber versuchen einen Zustand zu erreichen,
-        * der beim einem der nächsten Aufrufe kein Veto mehr erfordert.
+        * der beim einem der nÃ¤chsten Aufrufe kein Veto mehr erfordert.
         * 
         * @param event
         *            die Daten des Ereignisses
@@ -219,34 +212,31 @@ Rahmenwerks informiert wird.
         */
         boolean verbindungHalten(DavVerbindungsEvent event);
     }
-```
 
 ### JOB_FAMILY
-ist die ID für die Job-Familie, deren Beendigung abgewertet wird, bevor die Rahmenwerk-Applikation 
-tatsächlich beendet wird. Damit können Hintergrundprozesse gegebenenfalls noch anstehende
+ist die ID fÃ¼r die Job-Familie, deren Beendigung abgewertet wird, bevor die Rahmenwerk-Applikation 
+tatsÃ¤chlich beendet wird. Damit kÃ¶nnen Hintergrundprozesse gegebenenfalls noch anstehende
 Arbeiten beenden. 
 
 Um einen Job der Familie zuzuordnen muss die Funktion *belongsTo* implementiert werden, wie 
 nachstehend beispielhaft dargestellt ist:
 
-```java
        @Override
        public boolean belongsTo(final Object family) {
             return Rahmenwerk.JOB_FAMILY.equals(family) || super.belongsTo(family);
        }
-```
 
-Die Blockierung des Rahmenwerks ist nur bedingt sicher, ein "forced" -Abbruch ist jederzeit möglich!      
+Die Blockierung des Rahmenwerks ist nur bedingt sicher, ein "forced" -Abbruch ist jederzeit mÃ¶glich!      
 
 ### getXXX-Funktionen
 die Funktionen liefern spezielle Informationen zur Rahmenwerk-Applikation:
 
-- die übergebenen Kommandozeilen-Argumente
+- die Ã¼bergebenen Kommandozeilen-Argumente
 - den Name des angeneldeten Benutzers im Online-Betrieb
 - das Systemobjekt das angemeldeten Benutzers im Online-Betrieb
 - das bei der Herstellung der Datenverteilervebindung eingegebene Passwort
 - die Art der verwendeten Berechtigungsklassen
-- das Objekt an dem die Parameter für die Bedienoberfläche hinterlegt sind (im Online-Betrieb) 
+- das Objekt an dem die Parameter fÃ¼r die BedienoberflÃ¤che hinterlegt sind (im Online-Betrieb) 
 - den Toolbar-Manager des Hauptfensters der Rahmenwerks-Applikation
 	
 ## Einstellungen
@@ -255,11 +245,10 @@ des Rahmenwerks.
 
 Der Service wird durch eine Instanz der Schnittstelle *Einstellungen* implementiert.
 
-```java
     public interface Einstellungen {
 
         /**
-        * liefert die für die übergebene Adresse vorliegende Einstellung.
+        * liefert die fÃ¼r die Ã¼bergebene Adresse vorliegende Einstellung.
         * 
         * @param adresse
         *            die Adresse
@@ -270,7 +259,7 @@ Der Service wird durch eine Instanz der Schnittstelle *Einstellungen* implementi
         Object getValue(final EinstellungsAdresse adresse) throws IOException;
 
         /**
-        * setzt für die übergebene Adresse die angegebene Einstellung.
+        * setzt fÃ¼r die Ã¼bergebene Adresse die angegebene Einstellung.
         * 
         * @param adresse
         *            die Adresse
@@ -283,8 +272,8 @@ Der Service wird durch eine Instanz der Schnittstelle *Einstellungen* implementi
                 throws IOException;
 
         /**
-        * setzt für die übergebene Adresse die angegebene Einstellung mit den
-        * übergebenen Urlasserinformationen.
+        * setzt fÃ¼r die Ã¼bergebene Adresse die angegebene Einstellung mit den
+        * Ã¼bergebenen Urlasserinformationen.
         * 
         * @param adresse
         *            die Adresse
@@ -299,7 +288,7 @@ Der Service wird durch eine Instanz der Schnittstelle *Einstellungen* implementi
                 final UrlasserInfo urlasser) throws IOException;
 
         /**
-        * entfernt die unter der übergebenen Adresse hinterlegten Einstellungen.
+        * entfernt die unter der Ã¼bergebenen Adresse hinterlegten Einstellungen.
         * 
         * @param adresse
         *            die Adresse
@@ -307,7 +296,7 @@ Der Service wird durch eine Instanz der Schnittstelle *Einstellungen* implementi
         void removeValue(EinstellungsAdresse adresse);
 
         /**
-        * fügt einen Listener hinzu, der über Änderungen von Einstellungen
+        * fÃ¼gt einen Listener hinzu, der Ã¼ber Ã„nderungen von Einstellungen
         * informiert wird.
         * 
         * @param listener
@@ -316,7 +305,7 @@ Der Service wird durch eine Instanz der Schnittstelle *Einstellungen* implementi
         void addEinstellungsListener(final EinstellungChangeListener listener);
     
         /**
-        * fügt einen Listener hinzu, der über Änderungen von Einstellungen der
+        * fÃ¼gt einen Listener hinzu, der Ã¼ber Ã„nderungen von Einstellungen der
         * angegebenen Kategorie informiert wird.
         * 
         * @param listener
@@ -328,7 +317,7 @@ Der Service wird durch eine Instanz der Schnittstelle *Einstellungen* implementi
                 final String category);
 
         /**
-        * entfernt einen Listener, der über Änderungen der Einstellungen informiert
+        * entfernt einen Listener, der Ã¼ber Ã„nderungen der Einstellungen informiert
         * wurde.
         * 
         * @param listener
@@ -337,7 +326,7 @@ Der Service wird durch eine Instanz der Schnittstelle *Einstellungen* implementi
         void removeEinstellungsListener(final EinstellungChangeListener listener);
 
         /**
-        * entfernt einen Listener, der über Änderungen der Einstellungen in der
+        * entfernt einen Listener, der Ã¼ber Ã„nderungen der Einstellungen in der
         * angegebenen Kategorie informiert wurde.
         * 
         * @param listener
@@ -349,7 +338,7 @@ Der Service wird durch eine Instanz der Schnittstelle *Einstellungen* implementi
                 final String category);
 
         /**
-        * fügt einen Listener hinzu, der über die Verfügbarkeit des
+        * fÃ¼gt einen Listener hinzu, der Ã¼ber die VerfÃ¼gbarkeit des
         * Einstellungsspeichers informiert wird.
         * 
         * @param listener
@@ -359,7 +348,7 @@ Der Service wird durch eine Instanz der Schnittstelle *Einstellungen* implementi
                 final EinstellungAvailabilityListener listener);
 
         /**
-        * entfernt einen Listener, der über die Verfügbarkeit des
+        * entfernt einen Listener, der Ã¼ber die VerfÃ¼gbarkeit des
         * Einstellungsspeichers informiert wird.
         * 
         * @param listener
@@ -374,8 +363,8 @@ Eine detaillierte Beschreibung des Zugriffs auf die Einstellungen erfolgt in ein
 
 ## Berechtigungen	 
 Der Service bietet den Zugriff auf die von den Plug-ins des Rahmenwerks definierten Berechtigungen
-mit den in der Regel bestimmte Funktionalitäten auf Berechtigungsklassen bezogen verfügbar gemacht oder
-entzogen werden können. 
+mit den in der Regel bestimmte FunktionalitÃ¤ten auf Berechtigungsklassen bezogen verfÃ¼gbar gemacht oder
+entzogen werden kÃ¶nnen. 
 
 Der Service wird durch eine Instanz der Schnittstelle *Berechtigungen* implementiert.
 
@@ -383,10 +372,10 @@ Der Service wird durch eine Instanz der Schnittstelle *Berechtigungen* implement
     public interface Berechtigungen {
 
         /**
-        * Fügt eine Funktion zur Liste der Funktionen mit Berechtigungen hinzu.
+        * FÃ¼gt eine Funktion zur Liste der Funktionen mit Berechtigungen hinzu.
         * 
         * @param funktion
-        *            Funktion, die hinzugefügt werden soll.
+        *            Funktion, die hinzugefÃ¼gt werden soll.
         */
         void addOberflaechenFunktion(final FunktionMitBerechtigung funktion);
 
@@ -406,7 +395,7 @@ Der Service wird durch eine Instanz der Schnittstelle *Berechtigungen* implement
         Collection<FunktionMitBerechtigung> getFunktionen();
 
         /**
-        * prüft, ob der als SystemObject übergebene Benutzer, die Berechtigung für
+        * prÃ¼ft, ob der als SystemObject Ã¼bergebene Benutzer, die Berechtigung fÃ¼r
         * die angegebene Funktion besitzt.
         * 
         * @param benutzer
@@ -419,7 +408,7 @@ Der Service wird durch eine Instanz der Schnittstelle *Berechtigungen* implement
                 FunktionMitBerechtigung funktion);
 
         /**
-        * prüft, ob der Benutzer mit der übergebenen PID, die Berechtigung für die
+        * prÃ¼ft, ob der Benutzer mit der Ã¼bergebenen PID, die Berechtigung fÃ¼r die
         * angegebene Funktion besitzt.
         * 
         * @param benutzerPid
@@ -441,7 +430,7 @@ Der Service wird durch eine Instanz der Schnittstelle *Berechtigungen* implement
         FunktionMitBerechtigung getFunktion(String id);
 
         /**
-        * liefert einen Sammlung der verfügbaren Berechtigungsklassen (als
+        * liefert einen Sammlung der verfÃ¼gbaren Berechtigungsklassen (als
         * SystemObject).
         * 
         * @return die Berechtigungsklassen
@@ -449,7 +438,7 @@ Der Service wird durch eine Instanz der Schnittstelle *Berechtigungen* implement
         Collection<SystemObject> getBerechtigungsKlassen();
 
         /**
-        * fügt einen Listener hinzu, der über Änderungen von Berechtigungen
+        * fÃ¼gt einen Listener hinzu, der Ã¼ber Anderungen von Berechtigungen
         * informiert wird.
         * 
         * @param listener
@@ -458,7 +447,7 @@ Der Service wird durch eine Instanz der Schnittstelle *Berechtigungen* implement
         void addOberflaechenFunktionsListener(IBerechtigungListener listener);
 
         /**
-        * fügt einen Listener hinzu, der über Änderungen von Berechtigungen der
+        * fÃ¼gt einen Listener hinzu, der Ã¼ber Ã„nderungen von Berechtigungen der
         * angegebenen Funktion informiert wird.
         * 
         * @param listener
@@ -470,7 +459,7 @@ Der Service wird durch eine Instanz der Schnittstelle *Berechtigungen* implement
                 FunktionMitBerechtigung funktion);
 
         /**
-        * entfernt einen für Änderungen von Berechtigungen angemeldeten Listener.
+        * entfernt einen fÃ¼r Ã„nderungen von Berechtigungen angemeldeten Listener.
         * 
         * @param listener
         *            der Listener
