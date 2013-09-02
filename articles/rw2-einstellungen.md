@@ -44,24 +44,26 @@ wollen zur Verfügung. Der Zugriff auf die Services das Rahmenwerks ist im Kapit
 
 Der Service selbst wird durch folgende Schnittstelle definiert:
 
-    public interface Einstellungen {
+```java
+public interface Einstellungen {
     
-        Object getValue(final EinstellungsAdresse adresse) throws IOException;
+	Object getValue(final EinstellungsAdresse adresse) throws IOException;
         
-        void setValue(final EinstellungsAdresse adresse, final Object einstellung) throws IOException;
-        void setValue(final EinstellungsAdresse adresse, final Object einstellung, final UrlasserInfo urlasser) throws IOException;
+	void setValue(final EinstellungsAdresse adresse, final Object einstellung) throws IOException;
+	void setValue(final EinstellungsAdresse adresse, final Object einstellung, final UrlasserInfo urlasser) throws IOException;
 
-        void removeValue(EinstellungsAdresse adresse);
+	void removeValue(EinstellungsAdresse adresse);
         
-        void addEinstellungsListener(final EinstellungChangeListener listener);
-        void addEinstellungsListener(final EinstellungChangeListener listener, final String category);
-        void removeEinstellungsListener(final EinstellungChangeListener listener);
-        void removeEinstellungsListener(final EinstellungChangeListener listener, final String category);
+	void addEinstellungsListener(final EinstellungChangeListener listener);
+	void addEinstellungsListener(final EinstellungChangeListener listener, final String category);
+	void removeEinstellungsListener(final EinstellungChangeListener listener);
+	void removeEinstellungsListener(final EinstellungChangeListener listener, final String category);
 
-        void addEinstellungsAvailabilityListener(final EinstellungAvailabilityListener listener);
-        void removeEinstellungsAvailabilityListener(final EinstellungAvailabilityListener listener);
-    }
- 
+	void addEinstellungsAvailabilityListener(final EinstellungAvailabilityListener listener);
+	void removeEinstellungsAvailabilityListener(final EinstellungAvailabilityListener listener);
+}
+```
+
 #### getValue - Lesen einer definierten Einstellung
 
 Die Funktion liefert die mit der angegebenen Einstellungsadresse definierte Einstellung. 
@@ -86,34 +88,36 @@ Die Funktionen ermöglichen die Anmeldung von Listenern, die benachrichtigt werd
 Optional kann die Anmeldung auf spezielle Typen erfolgen, das ist aber erst dann sinnvoll, wenn Plug-ins auch 
 Factories zum Speichern von Einstellungen, die keine Strings sind implementieren.
 
-Ein Listener für Einstellungen implementiert folgende Schnitstelle 
+Ein Listener für Einstellungen implementiert folgende Schnitstelle: 
 
-    public interface EinstellungChangeListener {
+```java
+public interface EinstellungChangeListener {
 
-        /**
-         * es wurde eine neue Einstellung angelegt.
-         * 
-        * @param event
-        *            die Daten des Ereignisses
-        */
-        void einstellungAngelegt(final EinstellungsEvent event);
+    /**
+     * es wurde eine neue Einstellung angelegt.
+     * 
+     * @param event
+     *            die Daten des Ereignisses
+     */
+    void einstellungAngelegt(final EinstellungsEvent event);
     
-        /**
-        * eine bestehende Einstellung wurde aktualisiert.
-        * 
-        * @param event
-        *            die Daten des Ereignisses
-        */
-        void einstellungAktualisiert(final EinstellungsEvent event);
+    /**
+     * eine bestehende Einstellung wurde aktualisiert.
+     * 
+     * @param event
+     *            die Daten des Ereignisses
+     */
+    void einstellungAktualisiert(final EinstellungsEvent event);
 
-        /**
-        * eine Einstellung wurde aus dem Einstellungsspeicher entfernt.
-        * 
-        * @param event
-        *            die Daten des Ereignisses
-        */
-        void einstellungEntfernt(final EinstellungsEvent event);
-    }
+    /**
+     * eine Einstellung wurde aus dem Einstellungsspeicher entfernt.
+     * 
+     * @param event
+     *            die Daten des Ereignisses
+     */
+    void einstellungEntfernt(final EinstellungsEvent event);
+}
+```
 
 und wird damit benachrichtigt über:
 
@@ -126,14 +130,16 @@ und wird damit benachrichtigt über:
 Die Funktion erlaubt die Registrierung von Listenern die über die Verfügbarkeit der
 netzwerkweiten Einstellungsspeicher informieren.
 
-    public interface EinstellungAvailabilityListener {
+```java
+public interface EinstellungAvailabilityListener {
     
-        /** der Einstellungsspeicher ist verf�gbar. */
-        void available();
+    /** der Einstellungsspeicher ist verfügbar. */
+    void available();
     
-        /** der Einstellungsspeicher ist nicht verf�gbar. */
-        void disabled();
-    }
+    /** der Einstellungsspeicher ist nicht verfügbar. */
+    void disabled();
+}
+```
 
 Alle oben aufgeführten Einstellungsspeicher sind nur verfügbar, wenn eine Datenverteilerverbindung besteht.
 Im Offline-Betrieb ist nur der allgemeine lokale Einstellungsspeicher verfügbar, da eine Zuordnung zu Benutzerklassen
@@ -145,9 +151,11 @@ Die Einstellungsadresse spezifiziert, auf welche Einstellung zugegriffen werden 
 
 Momentan wird eine Einstellungsadresse über den Konstruktor:
 
-    public EinstellungsAdresse(final String typ, final String id,
-            final EinstellungOwnerType ownerType, final String pid,
-            final EinstellungLocation location)
+```java
+public EinstellungsAdresse(final String typ, final String id,
+    final EinstellungOwnerType ownerType, final String pid,
+    final EinstellungLocation location)
+```
             
 erzeugt. Zusätzliche Convenience-Funktionen sind geplant.
 
@@ -170,15 +178,16 @@ ID gewählt werden sollte bspw. unter Einbeziehung der ID des Plug-ins von dem e
 #### ownerType
 beschreibt, für wen die Einstellung gültig ist. Mit dem enum stehen folgende Werte zur Verfügung:
 
-    public enum EinstellungOwnerType {
-
-        /** Systemweite (allgemeine) Einstellung. */
-        SYSTEM,
-        /** Einstellung ist einer Benutzerklasse zugeordnet. */
-        BENUTZERKLASSE,
-        /** Einstellung ist einem Benutzer zugeordnet. */
-        BENUTZER;
-    }
+```java
+public enum EinstellungOwnerType {
+    /** Systemweite (allgemeine) Einstellung. */
+    SYSTEM,
+    /** Einstellung ist einer Benutzerklasse zugeordnet. */
+    BENUTZERKLASSE,
+    /** Einstellung ist einem Benutzer zugeordnet. */
+    BENUTZER;
+}
+```
 
 Zu beachten ist, das die Einstellungen für Benutzerklassen (noch) nicht unterstützt werden.
 
@@ -189,14 +198,14 @@ ist der Wert *null* zu übergeben.
 #### location
 ist der Ort, an dem die Einstellung gespeichert werden soll. Mit dem enum stehen folgende Werte zur Verfügung:
 
-    public enum EinstellungLocation {
-    
-        /** Einstellung wird netzwerkweit (als Parameter in Datenverteiler) gespeichert. */
-        NETZWERKWEIT, 
-    
-        /** Einstellung wird lokal gespeichert. */
-        LOKAL;
-    } 
+```java
+public enum EinstellungLocation {
+    /** Einstellung wird netzwerkweit (als Parameter in Datenverteiler) gespeichert. */
+    NETZWERKWEIT, 
+    /** Einstellung wird lokal gespeichert. */
+    LOKAL;
+}
+``` 
 
 ## Erweiterte Funktionalität - EinstellungsFactory
 
@@ -209,41 +218,41 @@ deserialisiert werden kann.
 
 Das Interface für die Factory wird wie folgt beschrieben:
 
-    public interface EinstellungsFactory {
+```java
+public interface EinstellungsFactory {
 
-        /**
-        * liefert den Typ der Einstellung (i.d.R. der Klassenname der zu
-        * erzeugenden Instanzen)
-        * 
-        * @return den Name
-        */
-        String getTyp();
+    /**
+     * liefert den Typ der Einstellung (i.d.R. der Klassenname der zu
+     * erzeugenden Instanzen)
+     * 
+     * @return den Name
+     */
+    String getTyp();
 
-        /**
-        * wandelt ein Objekt in eine String-Repräsentation um.
-        * 
-        * @param einstellung
-        *            das zu serialisierende Einstellungsobjekt
-        * @return die Stringrepräsentation
-        * @throws IOException
-        *             die Serialisierung konnte nicht erfolgreich ausgeführt werden
-        */
-        String serialisiere(final Object einstellung) throws IOException;
+    /**
+     * wandelt ein Objekt in eine String-Repräsentation um.
+     * 
+     * @param einstellung
+     *            das zu serialisierende Einstellungsobjekt
+     * @return die Stringrepräsentation
+     * @throws IOException
+     *             die Serialisierung konnte nicht erfolgreich ausgeführt werden
+     */
+    String serialisiere(final Object einstellung) throws IOException;
 
-        /**
-        * wandelt einen String in das gewünschte Einstellungsobjekt um.
-        * 
-        * @param daten
-        *            die Daten des Zielobjekts als String
-        * @return das erzeugte Objekt
-        * @throws IOException
-        *             das Objekt konnte aus dem übergebenen String nicht erzeugt
-        *             werden
-        */
-        Object deserialisiere(final String daten) throws IOException;
-    }
+    /**
+     * wandelt einen String in das gewünschte Einstellungsobjekt um.
+     * 
+     * @param daten
+     *            die Daten des Zielobjekts als String
+     * @return das erzeugte Objekt
+     * @throws IOException
+     *             das Objekt konnte aus dem übergebenen String nicht erzeugt
+     *             werden
+     */
+    Object deserialisiere(final String daten) throws IOException;
+}
+```
     
 Die mit der Funktion *getTyp* gelieferte ID muss dann beim Lesen und Schreiben der Einstellung dem in
 der *Einstellungsadresse* angegebenen Typ entsprechen. 
-
-
