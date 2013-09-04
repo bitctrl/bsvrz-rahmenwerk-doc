@@ -1,8 +1,3 @@
-Title:   Rahmenwerk 2.0 - Einstellungen  
-Author:  U. Peuker  
-Date:    August 30, 2013  
-Comment: Verwendung des Einstellungsspeichers im Rahmenwerk 2.0
-
 # Einstellungen
 
 ## Hintergrund
@@ -64,8 +59,10 @@ public interface Einstellungen {
 	void removeEinstellungsListener(final EinstellungChangeListener listener, 
 					final String category);
 
-	void addEinstellungsAvailabilityListener(final EinstellungAvailabilityListener listener);
-	void removeEinstellungsAvailabilityListener(final EinstellungAvailabilityListener listener);
+	void addEinstellungsAvailabilityListener(
+					final EinstellungAvailabilityListener listener);
+	void removeEinstellungsAvailabilityListener(
+					final EinstellungAvailabilityListener listener);
 }
 ```
 
@@ -95,7 +92,7 @@ Factories zum Speichern von Einstellungen, die keine Strings sind implementieren
 
 Ein Listener für Einstellungen implementiert folgende Schnitstelle: 
 
-```java
+```
 public interface EinstellungChangeListener {
 
     /**
@@ -183,7 +180,7 @@ ID gewählt werden sollte bspw. unter Einbeziehung der ID des Plug-ins von dem e
 #### ownerType
 beschreibt, für wen die Einstellung gültig ist. Mit dem enum stehen folgende Werte zur Verfügung:
 
-```java
+```
 public enum EinstellungOwnerType {
     /** Systemweite (allgemeine) Einstellung. */
     SYSTEM,
@@ -203,7 +200,7 @@ ist der Wert *null* zu übergeben.
 #### location
 ist der Ort, an dem die Einstellung gespeichert werden soll. Mit dem enum stehen folgende Werte zur Verfügung:
 
-```java
+```
 public enum EinstellungLocation {
     /** Einstellung wird netzwerkweit (als Parameter in Datenverteiler) gespeichert. */
     NETZWERKWEIT, 
