@@ -72,7 +72,7 @@ Mögliche Quellen sind:
 
 ### ToolbarControl
 
-sind sind spezielle Contribution-Items, die weder durch Commands nioch Actions 
+sind sind spezielle Contribution-Items, die weder durch Commands noch Actions 
 repräsentiert werden können, beispielsweise Zeitanzeige, Statusanzeigen für Elemente
 des Systems, Informationsanzeigen, ....
 
