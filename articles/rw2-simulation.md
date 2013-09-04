@@ -12,8 +12,8 @@ verschiedenen Gründen nur als Proof of Concepts zu betrachten.
 - der Umgang der Plug-ins des Rahmenwerks und die Behandlung unvollständig 
   parametrierter bzw. nicht konfigurierter Simulationen ist momentan nicht
   vollständig geklärt
-- lokale Einstellungen des Rahemnwerks werden in einem zentralen Verzeichnis
-  abgelegt, d.h. sie gelten auch für die SImulation und könnten im Rahmen der Simulation
+- lokale Einstellungen des Rahmenwerks werden in einem zentralen Verzeichnis
+  abgelegt, d.h. sie gelten auch für die Simulation und könnten im Rahmen der Simulation
   mit Auswirkungen auf den "Normalbetrieb" verändert werden
 - das Eclipse 4 Framework bietet zwar die Möglichkeit per Theming die Optik der Workbench
   zu ändern. Die zur Verfügung stehende Funktionalität ist aber derzeit teileweise
