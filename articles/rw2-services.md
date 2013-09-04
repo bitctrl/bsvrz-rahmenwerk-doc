@@ -137,7 +137,7 @@ instantiiert werden auf die Services zurückgreifen.
 Der eleganteste Weg wäre der Zugriff auf die Services wäre die Verwendung von Dependency Injection, 
 die integraler Bestandteil der E4 Platform ist.
 
-Da jedoch auf Grund des aktuellen Status der E$ Komponenten und Entwicklungswerkzeuge, sowie im 
+Da jedoch auf Grund des aktuellen Status der E4 Komponenten und Entwicklungswerkzeuge, sowie im 
 Hinblick auf die möglichst hohe Kompatibilität der bestehenden BuV-Software-Komponenten, entschieden
 wurde die Eclipse RCP Platform im Kompatibilitätsmodus zu Eclipse 3 zu betreiben, stehen die 
 entsprechenden Möglichkeiten nicht vollumfänglich zur Verfügung.
