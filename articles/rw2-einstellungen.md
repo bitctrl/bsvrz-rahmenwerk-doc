@@ -49,15 +49,20 @@ public interface Einstellungen {
     
 	Object getValue(final EinstellungsAdresse adresse) throws IOException;
         
-	void setValue(final EinstellungsAdresse adresse, final Object einstellung) throws IOException;
-	void setValue(final EinstellungsAdresse adresse, final Object einstellung, final UrlasserInfo urlasser) throws IOException;
+	void setValue(final EinstellungsAdresse adresse, 
+					final Object einstellung) throws IOException;
+	void setValue(final EinstellungsAdresse adresse,
+	                final Object einstellung, 
+	                final UrlasserInfo urlasser) throws IOException;
 
 	void removeValue(EinstellungsAdresse adresse);
         
 	void addEinstellungsListener(final EinstellungChangeListener listener);
-	void addEinstellungsListener(final EinstellungChangeListener listener, final String category);
+	void addEinstellungsListener(final EinstellungChangeListener listener, 
+					final String category);
 	void removeEinstellungsListener(final EinstellungChangeListener listener);
-	void removeEinstellungsListener(final EinstellungChangeListener listener, final String category);
+	void removeEinstellungsListener(final EinstellungChangeListener listener, 
+					final String category);
 
 	void addEinstellungsAvailabilityListener(final EinstellungAvailabilityListener listener);
 	void removeEinstellungsAvailabilityListener(final EinstellungAvailabilityListener listener);

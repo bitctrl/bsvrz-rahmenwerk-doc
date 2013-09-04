@@ -28,11 +28,23 @@ die alle grundlegenden Services des Rahmenwerks bereitgestellt werden (Datei rah
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="de.bsvrz.buv.rw.compatibility">
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0"
+                  name="de.bsvrz.buv.rw.compatibility">
    <implementation class="de.bsvrz.buv.rw.compatibility.internal.RahmenwerkService"/>
-   <reference bind="bindRahmenwerk" cardinality="1..1" interface="de.bsvrz.buv.rw.basislib.Rahmenwerk" name="Rahmenwerk" policy="static" unbind="unbindRahmenwerk"/>
-   <reference bind="bindBerechtigungen" cardinality="1..1" interface="de.bsvrz.buv.rw.basislib.berechtigung.Berechtigungen" name="Berechtigungen" policy="static" unbind="unbindBerechtigungen"/>
-   <reference bind="bindEinstellungen" cardinality="1..1" interface="de.bsvrz.buv.rw.basislib.einstellungen.Einstellungen" name="Einstellungen" policy="static" unbind="unbindEinstellungen"/>
+   <reference bind="bindRahmenwerk" cardinality="1..1" 
+   			  interface="de.bsvrz.buv.rw.basislib.Rahmenwerk" 
+   			  name="Rahmenwerk" policy="static" 
+   			  unbind="unbindRahmenwerk"/>
+   <reference bind="bindBerechtigungen" cardinality="1..1" 
+              interface="de.bsvrz.buv.rw.basislib.berechtigung.Berechtigungen" 
+              name="Berechtigungen" 
+              policy="static" 
+              unbind="unbindBerechtigungen"/>
+   <reference bind="bindEinstellungen" cardinality="1..1" 
+              interface="de.bsvrz.buv.rw.basislib.einstellungen.Einstellungen" 
+              name="Einstellungen" 
+              policy="static" 
+              unbind="unbindEinstellungen"/>
 </scr:component>
 ```
 
