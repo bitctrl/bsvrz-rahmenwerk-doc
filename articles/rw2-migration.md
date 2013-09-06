@@ -65,4 +65,30 @@ Der Name der Schnittstelle *IDruckvorschau* ist jetzt *RwPrintable* und liegt in
 einem anderem Package. Die Schnittstellen beiden Interfaces sind identisch, d.h. es
 müssen lediglich die Namen korrigiert und Imports angpasst werden.
 
+### DialogEreignisSystemkalenderUebernahme
+
+Der Dialog wurde in einen normalen JFace-Dialog umgebaut und umbenannt. Die Verwendung muss entsprechend 
+angepasst werden:
+
+**ALT**
+```
+DialogEreignisSystemkalenderUebernahme dialog = new DialogEreignisSystemkalenderUebernahme(
+					shell);
+LinkedList<IEintragBereich> bereiche 
+             = dialog.oeffnen(DialogEreignisSystemkalenderUebernahme.Quelle.systemkalender);
+```
+
+**NEU**
+```
+KalenderBereichDialog bereichsDialog = new KalenderBereichDialog(shell, Quelle.systemkalender);
+if ( bereichsDialog.open() == KalenderBereichDialog.OK) {
+	LinkedList<IEintragBereich> bereiche = bereichsDialog.getSelektierteBereiche();
+}
+```
+
+
+
+
+
+
  
