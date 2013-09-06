@@ -86,7 +86,45 @@ if ( bereichsDialog.open() == KalenderBereichDialog.OK) {
 }
 ```
 
+### EinstellungsArt
 
+Das enum *EinstellungsArt* wurde ersetzt, und durch eine Klasse *Speicherkey* ersetzt,
+da damit bisher nur die Speicherziele:
+
+- Benutzereinstellungen lokal (angemeldeter Nutzer)
+- Benutzereinstellungen netzwerkweit (angemeldeter Nutzer)
+- Allgemeine Einstellungen lokal
+- Allgemeine Einstellungen netzwerkweit 
+ 
+abgedeckt wurden
+ 
+Potentiell können aber auch Einstellungen für
+
+- Berechtigungsgruppen lokal
+- Berechtigungsgruppen netzwerkweit
+- Benutzereinstellungen lokal (irgendein Nutzer)
+- Benutzereinstellungen netzwerkweit (irgendein Nutzer)
+
+gelesen und gespeichert werden.
+
+Die Klasse *Speicherkey* bietet Convenience-Methoden als Ersatz für die enum-Werte.
+
+```
+public static SpeicherKey benutzerNetzweit();
+public static SpeicherKey benutzerLokal();
+public static SpeicherKey allgemeinNetzweit();
+public static SpeicherKey allgemeinLokal();
+
+public static Collection<SpeicherKey> getDefaultKeys();
+```
+
+Die Methode *getDefaultKeys* bildet den Ersatz für *EInstellungsArt.values()*.
+
+> Zu beachten ist, das nach dem Verständnis des Rahmenwerks 2.0 nur im Online-Betrieb alle 
+> gennanten Einstellungsspeicher zur Verfügung stehen, da ansonsten kein authentifizierter
+> Benutzer zur Verfügung steht.
+> Im Offlinebetrieb kann nur auf **allgemeinLokal** zugegriffen werden, der Speicher steht
+> genau genommen hier auch für **offlineEinstellung**.
 
 
 
