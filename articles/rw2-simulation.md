@@ -35,7 +35,7 @@ Die CSS-Dateien "defaultstyle.css" und "simulation.css" sind im Unterverzeichnis
 Das Theme "Simulation" wird aktiviert, wenn eine Simulationsvariante beim Start des 
 Rahmenwerks übergeben wurde und eine Datenverteilerverbindung besteht. 
 
-![Rahmenwerk mit Thele "Simulation"](../assets/css_simulation.png) 
+![Rahmenwerk mit Theme "Simulation"](../assets/css_simulation.png) 
 
 Momentan wird die Hintergrundfrabe des Hauptfensters manipuliert.
 

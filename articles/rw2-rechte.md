@@ -33,11 +33,16 @@ Für jede Oberflächenfunktion können Berechtigungen pro definierter Benutzerkl
 vergeben werden. Damit werden die in den Technischen Anforderungen für das Segment BuV
 geforderten Eigenschaften (TBuV-103/104) wie folgt realisiert:
 
-- **Wer?** - entspricht der festgelegten Benutzerklasse (eine Rechtevergabe auf Benutzerebene ist nicht vorgesehen und wird nur implizit durch die Zuordnung eines Nutzers zu einer Benutzerklasse realisiert)
+- **Wer?** - entspricht der festgelegten Benutzerklasse (eine Rechtevergabe auf Benutzerebene ist 
+   nicht vorgesehen und wird nur implizit durch die Zuordnung eines Nutzers zu einer Benutzerklasse realisiert)
 - **Was?** - entspricht der Oberflächenfunktion an sich, definiert über die festgelegte ID
 - **Wie?** - entspricht der Festlegung Freigabe/Sperrung
-- **Worauf?** - wird nicht direkt abgebildet sondern bei Bedarf durch mehrere Oberflächenfunktionen umgesetzt, d.h. statt der Definition einer einzelnen Funktion mit Beschränkungen auf jeweils ein Bedienelement eines Plug-Ins definiert das Plug-In zwei Funktionen, die individuell mit Rechte versehen werden können.
-- **Ausnahmen?** - auf Ausnahmen im eigentlichen Sinne wird verzichtet, die Zuordnungen Benutzerklasse-Funktion sind eindeutig, die Parametrierung erfolgt über geeignete Editoren, so dass auf Platzhalter in den Definitionen der Rechte verzichtet werden kann und Ausnahmen damit obsolet werden
+- **Worauf?** - wird nicht direkt abgebildet sondern bei Bedarf durch mehrere Oberflächenfunktionen 
+   umgesetzt, d.h. statt der Definition einer einzelnen Funktion mit Beschränkungen auf jeweils ein 
+   Bedienelement eines Plug-Ins definiert das Plug-In zwei Funktionen, die individuell mit Rechte versehen werden können.
+- **Ausnahmen?** - auf Ausnahmen im eigentlichen Sinne wird verzichtet, die Zuordnungen 
+   Benutzerklasse-Funktion sind eindeutig, Wildcards für Funktionen werden nach
+   vorgegebenen Regeln verrechnet.
 
 ## Repräsentation im Datenverteiler
 
@@ -49,8 +54,110 @@ Die entsprechenden Objekte und Attributgruppen sind in der aktuellen
 Datenverteilerkonfiguration verfügbar. Die Einträge des Parameterdatensatzes bezüglich 
 einschränkender Objekte, Ausnahmen und Verschachtelungstiefe von Ausnahmen werden ignoriert.
 
+**Auswertung des Datensatzes**
+
+Die Einträge des Datensatzes mit den Oberflächenberechtigungen erfolgt nach folgenden Regeln.
+
+- aus der Menge der Datensätze werden Kombinationen gebildet aus:
+	- Berechtigungsklasse
+	- Funktion
+	- Berechtigung (Freigabe/Sperrung)
+- die Sonderfälle (laut TBuV-103) "*" für Funktionen und Klassen werden wie eine Berechtigungsklasse
+  bzw. wie eine Funktion behandelt
+- Jede Kombination aus Berechtigungsklasse und FUnktion darf nur einmal vorkommen, Duplikate
+  werden ignoriert, ein Eintrag mit *Sperrung* hat dabei immer Vorrang
+- die Prüfung ob eine Funktion für einen Benutzer freigegeben ist erfolgt in der nachstehenden
+  Reihenfolge:
+  - es existiert ein konkreter Eintrag *Klasse/Funktion* dann gilt dessen Freigabewert
+  - es existiert ein Eintrag *Klasse/Alle-Funktionen (Wildcard)* dann gilt dessen Freigabewert 
+  - es existiert ein Eintrag *Alle Klassen (Wildcard)/Funktion* dann gilt dessen Freigabewert 
+  - es existiert ein Eintrag *Alle Klassen (Wildcard)/Alle-Funktionen (Wildcard)* dann gilt dessen Freigabewert 
+  - die Funktion ist nicht freigegeben
+   
+
+Die Darstellung zum **Berechtigungseditor** verdeutlicht dies an Beispielen.
+
 Der Zugriff auf die Berechtigungen erfolgt über einen vom Rahmenwerk bereitgestelltem Service
 vom Typ "Berechtigungen".
+
+## Definition und Anzeige von Berechtigungen im Rahmenwerk
+
+### Perspektive *Berechtigungen*
+
+Die Perspektive fasst die für die Bearbeitung der Berechtigungen zur Verfügung stehenden
+Elemente des Rahmenwerks an. Verfügbar sind:
+
+- ein Editor zum Bearbeiten des Parameters der Oberflächenberechtigungen
+- eine Ansicht mit den aktuell vom Berechtigunsservice bereitgestellten Berechtigungen
+
+### Berechtigungseditor
+
+Der Berechtigungseditor stellt die oben genannten Beziehungen zwischen Berechtigungsklassen
+und Funktionen in einer Matrix dar.
+
+Die Berechtigungsklassen werden aus den in der verwendeten Konfiguration vorhandenen
+Objekten vom Typ *Berechtigungsklasse* bzw. *BerechtigungsklasseNeu* ermittelt (je nach
+Startparameter des Rahmenwerks).
+Zusätzlich werden die bereits im Datensatz vorhandenen Berechtigungsklassen über ihre ID
+ergänzt. Berechtigungsklassen, die im Datensatz vorliegen, aber noch nicht oder nicht mehr
+in der Konfiguration vorhanden sind, werden mit einem Stern im Namen markiert.
+
+Die Funktionen werden nach Plug-ins und optional Kategorien geordnet als Zeilen der Matrix
+abgebildet. Die aus Kompatibilitätsgründen händisch (nicht per ExtensionPoint definierten)
+Funktionen werden unter dem Abschnitt *Plugin nicht bekannt* versammelt.
+Ebenso wie bei den Berechtigungsklassen, werden Einträge aus dem Parameterdatensatz per 
+ID hinzugefügt und mit einem "*" markiert (beispielsweise wenn ein Plug-in, das die entsprechende
+Funktion bereitstellt momentan nicht verfügbar ist.
+
+Die erste Spalte der Matrix *Alle Berechtigungsklassen" und die erste Zeile *Alle Funktionen*
+stehen für die Wildcards, die die Ursache für die Vererbung bilden.
+
+So genügt es beispielsweise einer Klasse per Wildcarf alle Funktionen freizugeben, damit sind
+automatisch auch alle Funktionen freigegeben, die erst später durch Installation von Plug-ins
+hinzugefügt werden, ohne dass ein neuer Eingriff erforderlich ist 
+(siehe *Root* mit einer pauschalen Freigabe oder "Kein Zugriff* mit einer pauschalen Sperrung).
+
+![Berechtigungseditor](../assets/berechtigungen_editor.png) 
+
+Die Freigabewerte sind farblich und per Zeichen markiert:
+
+- **"X"** explizite Sperrung *Dunkelrot*
+- **"(X)"** Sperrung durch übergeordnete Regel *Rot*
+- **"O"** explizite Freigabe *Dunkelgrün*
+- **"(O)"** Freigabe durch übergeordnete Regel *Grün*
+
+Die Umschaltung erfolgt durch Doppelklick auf das entsprechende Feld, potentielle 
+Änderungen in der Vererbung werden unmittelbar angezeigt. Alternativ kann auch per Tastatur
+in den Feldern der Matrix navigiert werden und die Umschaltung per RETURN-Taste vorgenommen
+werden. Die Umschaltung erfolgt immer zwischen:
+
+- explizite Freigabe
+- explizite Sperrung
+- Vererbung (der Wert ergibt sich aus dem aktuellen Status der übrigen Matrix)
+
+Gespeichert wird über die im Menü eingebundene Speicherfunktion oder den bekannten
+Hotkey Strg-S.
+ 
+
+### Ansicht *Aktuelle Berechtigungen*
+
+Die Ansicht zeigt die von der Berechtigungsservive bereitgestellten Freigabewerte für
+Berechtigungsklassen und Funktionen.
+
+![Ansicht *Aktuelle Berechtigungen*](../assets/berechtigungen_view.png) 
+
+Die Darstellung entspricht der im Editor mit folgenden Ausnahmen:
+
+- die Spalte und Zeile für die Wildcard-Definitionen entfällt
+- es wird nur der Zustand Freigabe bzw. Sperrung angezeigt, keine Vererbung
+- die Matrix ist nicht editierbar
+
+Inhaltlich sollten die Darstellungen der Matrix im Editor und in der Ansicht identisch sein, 
+mit folgenden Ausnahmen:
+
+- im Editor wurden Änderungen vorgenommen und noch nicht gespeichert (Dirty-Flag am Editor-Tab)
+- das Rahmenwerk wurde mit deaktivierter Berechtigungsverwaltung gestartet (wird oberhalb 
+  der Matrix in der Ansicht angezeigt)
 
 ## Programmierschnittstelle
 
