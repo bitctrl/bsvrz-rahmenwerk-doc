@@ -178,6 +178,7 @@ public interface Berechtigungen {
             FunktionMitBerechtigung funktion);
     boolean hasBerechtigung(String benutzerPid, FunktionMitBerechtigung funktion);
     
+    Collection<SystemObject> getBerechtigungsKlassen(SystemObject benutzer);
     Collection<SystemObject> getBerechtigungsKlassen();
 
     void addOberflaechenFunktionsListener(IBerechtigungListener listener);
