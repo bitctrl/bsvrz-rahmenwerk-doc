@@ -174,6 +174,7 @@ public interface Berechtigungen {
     Collection<FunktionMitBerechtigung> getFunktionen();
     FunktionMitBerechtigung getFunktion(String id);
     
+    boolean hasBerechtigung(FunktionMitBerechtigung funktion);
     boolean hasBerechtigung(SystemObject benutzer,
             FunktionMitBerechtigung funktion);
     boolean hasBerechtigung(String benutzerPid, FunktionMitBerechtigung funktion);
