@@ -233,9 +233,13 @@ Eine Berechtigungsfunktion ist durch die im Konstruktor übergebenen Attribute d
 
 - **pluginId** die ID des Plug-ins in der die Funktion angelegt wird
 - **kategorie** eine optionale Kategorie, die nur zu Anzeigezwecken verwendet wird
-- **id** die eindeutige ID der Funktion
+- **id** die eindeutige ID der Funktion (wird mit der Plug-Id erweitert!) 
 - **bezeichnung** der Name der Funktion
 - **beschreibung** ein optionaler Beschreibungstext für die Funktion
+
+Die in der Berechtigungsverwaltung verwendete Id ergibt sich aus *<pluginid>.<id>*!
+
+
 
 ### IBerechtigungsListener
 Die Schnittstelle für einen Listener, der über Änderungen in Berechtigungsverwaltung
@@ -293,12 +297,14 @@ repräsentiert.
 
 Eine Extension "function" wird durch die Attribute:
 
-- **id** die eindeutige ID der Funktion
+- **id** die eindeutige ID der Funktion (wird mit der Plug-Id erweitert!) 
 - **bezeichung** die Bezeichnung der Funktion
 - **kategorie** die optionale Kategorie
 - **beschreibung** die optionale Beschreibung
 
 definiert.
+
+Die in der Berechtigungsverwaltung verwendete Id ergibt sich aus *<pluginid>.<id>*!
 
 Eine auf diese Weise angelegte Berechtigungsfunktion wird vom Rahmenwerk automatisch initialisiert und
 der Berechtigungsverwaltung zugeordnet.
