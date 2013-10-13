@@ -71,14 +71,25 @@ public interface Einstellungen {
 Die Funktion liefert die mit der angegebenen Einstellungsadresse definierte Einstellung. 
 
 Wenn keine entsprechende Einstellung vorliegt, wird der Wert *null* geliefert.
-Es erfolgt keine "Vererbung" der Einstellungen, d.h. wenn nach einer benutzerdefinierten Einstellung gefragt wird, wird nicht automatisch die allgemeine EInstellung für die angegebene ID geliefert, wenn keine benutzerspezifische existiert.  
+Es erfolgt keine "Vererbung" der Einstellungen, d.h. wenn nach einer benutzerdefinierten 
+Einstellung gefragt wird, wird nicht automatisch die allgemeine EInstellung für die
+angegebene ID geliefert, wenn keine benutzerspezifische existiert.  
 
 #### setValue - Setzen einer definierten Einstellung
 
 Die Funktion schreibt den übergebenen Einstellungswert in den Einstellungsspeicher.
 
 Die Standardimplementierung des Rahmenwerks sieht lediglich Strings als Einstellungsobjekte vor.
-Sollen Objekte eines anderen Typs als Einstellungen gespeichert werden muss eine entsprechende Factory als Service im Rahmenwerk regsitriert werden.
+Sollen Objekte eines anderen Typs als Einstellungen gespeichert werden muss eine entsprechende Factory als Service im Rahmenwerk registriert werden.
+
+Werden Einstellungen netzwerkweit, allgemein gespeichert, erfolgt vor der Übernahme der Parameter
+eine Urlasserdatenabfrage zur Authentifikation des Nutzers, dessen Daten werden auch in die 
+Urlasserinformationen des Parameters übernommen.
+
+Wird der Urlasserdialog abgebrochen wirft die Funktion *setValue* eine *BenutzerDialogAbgebrochenException*.
+
+Die Abfrage der Urlasserinformationen erfolgt nicht, wenn die set-Funktion mit übergebenen Urlasserdaten
+verwendet wird.
 
 #### removeValue - Entfernen einer Einstellung
 
