@@ -42,6 +42,8 @@ Der Service selbst wird durch folgende Schnittstelle definiert:
 ```java
 public interface Einstellungen {
     
+	Map<String, String> getEinstellungsId(SpeicherKey key) throws IOException;
+
 	Object getValue(final EinstellungsAdresse adresse) throws IOException;
         
 	void setValue(final EinstellungsAdresse adresse, 
@@ -65,6 +67,16 @@ public interface Einstellungen {
 					final EinstellungAvailabilityListener listener);
 }
 ```
+
+#### getEinstellungsId
+
+Die Funktion liefert eine Menge der ID für die Einstellungen und die zugehörigen Typen, 
+die für den angegebenen SpeicherKey im Einstellungsspeicher verfügbar sind.
+
+Der Schlüssel in der Map entspricht der Id der jeweiligen Einstellung,
+der Wert entspricht dem Typ. Der Typ kann *null* sein, dann
+wird für diesen der Standard-Typ *java.lang.String* verwendet.
+
 
 #### getValue - Lesen einer definierten Einstellung
 
