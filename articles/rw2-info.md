@@ -24,12 +24,12 @@ Folgende Platzhalter stehen zur Verfügung:
 
 ## Informationen im Titel des Hauptfensters der Rahmenwerkanwendung
 
-Die im Titel des Rahmenwerk-Hauptfenster angezeigten Informationen werden als
+Die im Titel des Rahmenwerk-Hauptfensters angezeigten Informationen werden als
 lokale Einstellungen abgelegt.
 
 ![Grundeinstellungen des Rahmenwerks](../assets/rw_grundeinstellungen.png) 
 
-Einstellbar ist ein Titelformat für den Offline-Betrieb und ein Titel 
+Einstellbar sind ein Titelformat für den Offline-Betrieb und ein Titel 
 für den Online-Betrieb. Die Standwerte sind im Bild oben dargestellt.
 
 ## Informationen in der Statusleiste des Hauptfensters

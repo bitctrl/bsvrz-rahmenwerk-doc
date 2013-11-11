@@ -47,7 +47,7 @@ geforderten Eigenschaften (TBuV-103/104) wie folgt realisiert:
 ## Repräsentation im Datenverteiler
 
 Die Oberflächenberechtigungen werden im vorhandenen Parameterdatensatz eines Objekts 
-"Oberfäche" abgelegt. In der Regel ist das die AOE, dem Rahmenwerk kann aber ein anderes
+"Oberfläche" abgelegt. In der Regel ist das die AOE, dem Rahmenwerk kann aber ein anderes
 Objekt zur Berechtigungsverwaltung zugewiesen werden.
 
 Die entsprechenden Objekte und Attributgruppen sind in der aktuellen 
@@ -64,7 +64,7 @@ Die Einträge des Datensatzes mit den Oberflächenberechtigungen erfolgt nach fo
 	- Berechtigung (Freigabe/Sperrung)
 - die Sonderfälle (laut TBuV-103) "*" für Funktionen und Klassen werden wie eine Berechtigungsklasse
   bzw. wie eine Funktion behandelt
-- Jede Kombination aus Berechtigungsklasse und FUnktion darf nur einmal vorkommen, Duplikate
+- Jede Kombination aus Berechtigungsklasse und Funktion darf nur einmal vorkommen, Duplikate
   werden ignoriert, ein Eintrag mit *Sperrung* hat dabei immer Vorrang
 - die Prüfung ob eine Funktion für einen Benutzer freigegeben ist erfolgt in der nachstehenden
   Reihenfolge:
@@ -88,7 +88,7 @@ Die Perspektive fasst die für die Bearbeitung der Berechtigungen zur Verfügung
 Elemente des Rahmenwerks an. Verfügbar sind:
 
 - ein Editor zum Bearbeiten des Parameters der Oberflächenberechtigungen
-- eine Ansicht mit den aktuell vom Berechtigunsservice bereitgestellten Berechtigungen
+- eine Ansicht mit den aktuell vom Berechtigungsservice bereitgestellten Berechtigungen
 
 ### Berechtigungseditor
 
@@ -112,7 +112,7 @@ Funktion bereitstellt momentan nicht verfügbar ist.
 Die erste Spalte der Matrix *Alle Berechtigungsklassen" und die erste Zeile *Alle Funktionen*
 stehen für die Wildcards, die die Ursache für die Vererbung bilden.
 
-So genügt es beispielsweise einer Klasse per Wildcarf alle Funktionen freizugeben, damit sind
+So genügt es beispielsweise einer Klasse per Wildcard alle Funktionen freizugeben, damit sind
 automatisch auch alle Funktionen freigegeben, die erst später durch Installation von Plug-ins
 hinzugefügt werden, ohne dass ein neuer Eingriff erforderlich ist 
 (siehe *Root* mit einer pauschalen Freigabe oder "Kein Zugriff* mit einer pauschalen Sperrung).
@@ -136,12 +136,12 @@ werden. Die Umschaltung erfolgt immer zwischen:
 - Vererbung (der Wert ergibt sich aus dem aktuellen Status der übrigen Matrix)
 
 Gespeichert wird über die im Menü eingebundene Speicherfunktion oder den bekannten
-Hotkey Strg-S.
+Hot-Key Strg-S.
  
 
 ### Ansicht *Aktuelle Berechtigungen*
 
-Die Ansicht zeigt die von der Berechtigungsservive bereitgestellten Freigabewerte für
+Die Ansicht zeigt die vom Berechtigungsservice bereitgestellten Freigabewerte für
 Berechtigungsklassen und Funktionen.
 
 ![Ansicht *Aktuelle Berechtigungen*](../assets/berechtigungen_view.png) 
@@ -203,7 +203,7 @@ liefert alle bzw. durch die ID festgelegte Funktionen aus der Berechtigungsverwa
 Rahmenwerks.
 
 #### hasBerechtigung
-prüft, ob die Berechtigung für eine engegebene Berechtigungsfunktion hat.
+prüft, ob die Berechtigung für eine übergebene Berechtigungsfunktion besteht.
 
 Für die Prüfung der Berechtigungen wird geprüft, ob eine der Berechtigungsklassen, der der
 Nutzer zugeordnet ist eine Freigabe für die übergebene Funktion besitzt.
@@ -212,15 +212,15 @@ Nutzer zugeordnet ist eine Freigabe für die übergebene Funktion besitzt.
 alte Berechtigungskonzept verwendet wird.**
   
 #### Listener-Funktionen
-melden Listener an/ab, die über Änderungen in der Berchtigungsverwaltung allgemein oder
+melden Listener an/ab, die über Änderungen in der Berechtigungsverwaltung allgemein oder
 für bestimmte Berechtigungsfunktionen benachrichtigt werden sollen.
 
 ### FunktionMitBerechtigung
 Instanzen dieser Klasse repräsentieren die in der Berechtigungsverwaltung des Rahmenwerks
-registrierten Funktionen, denen eine Berechtigung/Freigabe pro Berechtigunsklasse zugeordnet
+registrierten Funktionen, denen eine Berechtigung/Freigabe pro Berechtigungsklasse zugeordnet
 wird.
 
-Die Instanzen können zwar aus Kompatibilitätsgründen dirket angelegt werden, sollten aber
+Die Instanzen können zwar aus Kompatibilitätsgründen direkt angelegt werden, sollten aber
 normalerweise als ExtensionPoints in Plug-ins definiert und vom Rahmenwerk intern 
 initialisiert werden.
 

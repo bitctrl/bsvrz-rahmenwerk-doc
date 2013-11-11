@@ -12,23 +12,23 @@ Maßnahmen:
 
 ## Migrationssupport
 
-Im ersten Schritt kann in einem betehenden Plug-in die Abhängigkeit zum Plug-in
+Im ersten Schritt kann in einem bestehenden Plug-in die Abhängigkeit zum Plug-in
 *de.bsvrz.buv.rw.migrationsupport* ergänzt werden.
 
-Damit sollte der bestehende Code in den meisten Fällen kompilerbar sein.
+Damit sollte der bestehende Code in den meisten Fällen kompilierbar sein.
 
-Folgende bekannte zusätzliche Eingriffe sind zusätzlich potentiell erfoderlich: 
+Folgende bekannte zusätzliche Eingriffe sind zusätzlich potentiell erforderlich: 
 
 - das zum Drucken verwendete Projekt *Paperclips* wurde von SourceForge zu einem Eclipse 
   Nebula Projekt übernommen. Dabei wurde der Name und die Packages von net.sf.* auf 
   org.eclipse.* geändert und die Version von 1.x auf 2.x angehoben.
-  Die Imports in betroffenen Paketen müssen aktuelisiert werden.
+  Die Imports in betroffenen Paketen müssen aktualisiert werden.
 - Das Plugin org.junit4 gibt es nicht mehr. Es gibt nur noch org.junit. Das aber in 
   Version 4.x. Abhängigkeiten zu diesem Plug-in müssen entsprechend angepasst werden.
 - die Schnittstelle *ILegende* hat zwei neue Methoden, die eventuell in den betroffenen
   Klassen nachgeführt werden müssen.
   
-Der **Migrationssupport** ist kein offziell unterstütztes Plug-in für den 
+Der **Migrationssupport** ist kein offiziell unterstütztes Plug-in für den 
 Produktiveinsatz sondern dient lediglich in dem Sinne der Erleichterung der Portierung, 
 das der Code im Wesentlichen kompilierbar bleibt und mit hoher Wahrscheinlichkeit auch
 funktioniert. 
@@ -62,8 +62,8 @@ der die entsprechenden Aufgaben in der Kommunikation mit dem Datenverteiler übe
 ### Drucken
 
 Der Name der Schnittstelle *IDruckvorschau* ist jetzt *RwPrintable* und liegt in 
-einem anderem Package. Die Schnittstellen beiden Interfaces sind identisch, d.h. es
-müssen lediglich die Namen korrigiert und Imports angpasst werden.
+einem anderen Package. Die Schnittstellen beiden Interfaces sind identisch, d.h. es
+müssen lediglich die Namen korrigiert und Imports angepasst werden.
 
 ### DialogEreignisSystemkalenderUebernahme
 
@@ -120,8 +120,8 @@ public static Collection<SpeicherKey> getDefaultKeys();
 
 Die Methode *getDefaultKeys* bildet den Ersatz für *EInstellungsArt.values()*.
 
-> Zu beachten ist, das nach dem Verständnis des Rahmenwerks 2.0 nur im Online-Betrieb alle 
-> gennanten Einstellungsspeicher zur Verfügung stehen, da ansonsten kein authentifizierter
+> Zu beachten ist, dass nach dem Verständnis des Rahmenwerks 2.0 nur im Online-Betrieb alle 
+> genannten Einstellungsspeicher zur Verfügung stehen, da ansonsten kein authentifizierter
 > Benutzer zur Verfügung steht.
 > Im Offlinebetrieb kann nur auf **allgemeinLokal** zugegriffen werden, der Speicher steht
 > genau genommen hier auch für **offlineEinstellung**.

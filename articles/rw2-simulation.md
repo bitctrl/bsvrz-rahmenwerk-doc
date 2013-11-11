@@ -37,7 +37,7 @@ Rahmenwerks übergeben wurde und eine Datenverteilerverbindung besteht.
 
 ![Rahmenwerk mit Theme "Simulation"](../assets/css_simulation.png) 
 
-Momentan wird die Hintergrundfrabe des Hauptfensters manipuliert.
+Momentan wird die Hintergrundfarbe des Hauptfensters manipuliert.
 
 ## Anzeige der Simulationsvariante als statische Information
 

@@ -11,7 +11,7 @@ Menüs und Toolbars werden generell gleich behandelt, deshalb steht für die Ers
 der gleiche Editor zur Verfügung, lediglich das Ziel der angezeigten Funktionselemente
 unterscheidet sich. Es stehen auch die gleichen Ressourcen zur Verfügung. Praktisch
 sind aber nicht alle Elemente sinnvoll gleichermaßen in Menü, Toolbar und Symbolleiste
-verwendbar. Eine softwareseite Unterstützung wird hierbei noch nicht geboten, es wird
+verwendbar. Eine softwareseitige Unterstützung wird hierbei noch nicht geboten, es wird
 auf die Intuition und die Intelligenz des Menübearbeiters gesetzt.
 
 Die erstellten Strukturen für Menüs (im weiteren Sinne) werden als Einstellungen
@@ -66,7 +66,7 @@ Mögliche Quellen sind:
 
 ### ToolbarControl
 
-sind sind spezielle Contribution-Items, die weder durch Commands noch Actions 
+sind spezielle Contribution-Items, die weder durch Commands noch Actions 
 repräsentiert werden können, beispielsweise Zeitanzeige, Statusanzeigen für Elemente
 des Systems, Informationsanzeigen, ....
 

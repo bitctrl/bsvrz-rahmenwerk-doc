@@ -34,8 +34,8 @@ Startbildschirms definiert werden.
 ![Grundeinstellungen des Rahmenwerks](../assets/rw_grundeinstellungen.png) 
 
 Einstellbar sind:
-- die anzuzeigende URL innerhalb der Willkommenseite
-- ob die Willkommenseite bei jedem Start des Rahmenwerks angezeigt werden soll, 
+- die anzuzeigende URL innerhalb der Willkommen-Seite
+- ob die Willkommen-Seite bei jedem Start des Rahmenwerks angezeigt werden soll, 
   womit beispielsweise aktuelle Nachrichten über einen projektinternen Webserver
   publiziert werden könnten. 
 

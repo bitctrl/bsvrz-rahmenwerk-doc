@@ -24,7 +24,7 @@ ist nicht vorgesehen. Diese Entscheidung wird durch die jeweilige Anwendung getr
 individuell anders sein.
 
 Die aktuelle Implementierung unterstützt bisher noch nicht die Speicherung der Einstellungen für Benutzerklassen, 
-dazu sollte zunächst die Zuordnung der Einstellungen für Benutzerklassen bzw. Benutzer an die Objekte diesen Typs 
+dazu sollte zunächst die Zuordnung der Einstellungen für Benutzerklassen bzw. Benutzer an die Objekte dieses Typs 
 verschoben werden. Ein entsprechender Änderungsantrag an die NERZ wurde vorgenommen.  
 
 Der Zugriff auf Einstellungen sollte nicht direkt über die Daten aus den Attributgruppen erfolgen, stattdessen steht 
@@ -84,7 +84,7 @@ Die Funktion liefert die mit der angegebenen Einstellungsadresse definierte Eins
 
 Wenn keine entsprechende Einstellung vorliegt, wird der Wert *null* geliefert.
 Es erfolgt keine "Vererbung" der Einstellungen, d.h. wenn nach einer benutzerdefinierten 
-Einstellung gefragt wird, wird nicht automatisch die allgemeine EInstellung für die
+Einstellung gefragt wird, wird nicht automatisch die allgemeine Einstellung für die
 angegebene ID geliefert, wenn keine benutzerspezifische existiert.  
 
 #### setValue - Setzen einer definierten Einstellung
@@ -238,7 +238,7 @@ Als Einstellungen werden in der Standardimplementierung lediglich String-Objekte
 
 Wenn Objekte anderer Typen direkt im Einstellungsspeicher abgelegt werden sollen, muss in der Einstellungsadresse
 der zugeordnete Typ angegeben werden (das kann der Klassenname oder jede andere beliebige ID sein) und es muss eine 
-EinstellungsFactory als Servive registriert werden, mit der das entsprechende Einstellungsobjekt serialisiert und
+EinstellungsFactory als Service registriert werden, mit der das entsprechende Einstellungsobjekt serialisiert und
 deserialisiert werden kann.
 
 Das Interface für die Factory wird wie folgt beschrieben:

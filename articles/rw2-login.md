@@ -21,7 +21,7 @@ des Rahmenwerks.
 
 ## Konfiguration des Dialogs
 
-Der Dialog kann in gewissen Grenzen an die Erfodernisse der konkreten Anwendung angepasst
+Der Dialog kann in gewissen Grenzen an die Erfordernisse der konkreten Anwendung angepasst
 werden. Die Anpassung erfolgt über Kommandozeilen-Parameter, die den Rahmenwerk beim Start
 mitgegeben werden. 
 
@@ -30,7 +30,7 @@ Folgende Optionen sind vorgesehen:
 ```bash
 -loginLogo=<Pfad zu einer Imagedatei>
 ```
-Die Option bestimmt das Logo, dass im Logindialog angezeigt wird. Das Image wird ohne 
+Die Option bestimmt das Logo, dass im Login-Dialog angezeigt wird. Das Image wird ohne 
 Rahmen eingepasst, d.h. dieser sollte Bestandteil der verwendeten Grafik sein!
 
 ```bash
@@ -48,7 +48,7 @@ Der Standwert ist "Rahmenwerk-Anmeldung".
 -loginMessage=<Text für den Meldungstext>
 ```
 Die Option bestimmt den Text im Kopfbereich des Dialogs. 
-Der Standwert ist "Geben Sie ihre Anmeldedaten an oder starten SIe im Offline-Betrieb"
+Der Standwert ist "Geben Sie ihre Anmeldedaten an oder starten Sie im Offline-Betrieb"
 
 ```bash
 -disableHost
@@ -57,8 +57,6 @@ Mit dieser Option wird die Anzeige der Eingabefelder für den Host und den Port 
 die Datenverteilerverbindung unterdrückt. Stattdessen werden die Angaben aus dem Standard-
 Datenverteiler-Startargument *-datenverteiler* übernommen. Falls dieses fehlt, werden die 
 Standardwerte *localhost* und *8083* verwendet.
-Die Option bestimmt den Text im Kopfbereich des Dialogs. 
-Der Standwert ist "Geben Sie ihre Anmeldedaten an oder starten SIe im Offline-Betrieb"
 
 Der Dialog wird immer an der Position geöffnet, an der er zuletzt geschlossen wurde.
 Insbesondere auf einem Multi-Monitor-System muss daher die korrekte Position einmalig

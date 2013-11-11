@@ -9,7 +9,7 @@ EinstellungsSpeicher, OberflächenFunktionen, ...
 
 Der Zugriff auf die Services kann auf verschiedenen Wegen erfolgen:
 
-### Service-Componente
+### Service-Komponente
 
 Ein Plug-in, das Rahmenwerk-Services benötigt installiert eine Komponente, die von den entsprechenden 
 Services abhängig ist. Die Komponente wird im Rahmen der Initialisierung des OSGI-Frameworks 
@@ -112,7 +112,7 @@ Die Komponente muss noch in in der MANIFEST.MF eingebunden werden:
     ....     
 ```
 
-Für die Definition und Einbindung der Komponenten setehen in der Eclipse-IDE entsprechende Hilfsmittel zur Verfügung!
+Für die Definition und Einbindung der Komponenten stehen in der Eclipse-IDE entsprechende Hilfsmittel zur Verfügung!
  
 Das Plug-in, das die Komponente installiert, hat damit volle Kontrolle über die Verfügbarkeit 
 der notwendigen Services.   
@@ -148,7 +148,7 @@ wurde die Eclipse RCP Platform im Kompatibilitätsmodus zu Eclipse 3 zu betreibe
 entsprechenden Möglichkeiten nicht vollumfänglich zur Verfügung.
 
 Prinzipiell ist es jedoch möglich neue Plug-ins und Komponenten als Erweiterung des vorhandenen
-Applikationsmodell als reine E4 modellbasierte Bestandteile zu intergrieren oder alternativ die
+Applikationsmodell als reine E4 modellbasierte Bestandteile zu integrieren oder alternativ die
 Eclipse3-Bridge aus dem E4-Tools-Projekt einzusetzen, um die Möglichkeiten des Dependency Injection-Mechanismus
 zu verwenden.
 
@@ -189,7 +189,7 @@ public interface Rahmenwerk {
 ```
 
 ### isOnline und getDavVerbindung
-dient zur Überprüfung und zum ermitteln der potentiell vorhandenen Datenverteilerverbindung.
+dient zur Überprüfung und zum Ermitteln der potentiell vorhandenen Datenverteilerverbindung.
 Der Service bietet außerdem die Möglichkeit, sich für die Benachrichtigung über den Zustandswechsel 
 der Datenverteilerverbindung zu registrieren. 
 
@@ -251,9 +251,9 @@ Die Blockierung des Rahmenwerks ist nur bedingt sicher, ein "forced" -Abbruch is
 die Funktionen liefern spezielle Informationen zur Rahmenwerk-Applikation:
 
 - die übergebenen Kommandozeilen-Argumente
-- den Name des angeneldeten Benutzers im Online-Betrieb
+- den Name des angemeldeten Benutzers im Online-Betrieb
 - das Systemobjekt das angemeldeten Benutzers im Online-Betrieb
-- das bei der Herstellung der Datenverteilervebindung eingegebene Passwort
+- das bei der Herstellung der Datenverteilerverbindung eingegebene Passwort
 - die Art der verwendeten Berechtigungsklassen
 - das Objekt an dem die Parameter für die Bedienoberfläche hinterlegt sind (im Online-Betrieb) 
 - den Toolbar-Manager des Hauptfensters der Rahmenwerks-Applikation

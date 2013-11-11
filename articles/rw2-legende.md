@@ -109,7 +109,7 @@ public interface ICustomLegende extends ILegende {
 ```
 
 ## Schnittstelle ITreeLegende
-ist die Schnittstelle für eine Legende, die Elemente in einer Baumamsicht darstellt.
+ist die Schnittstelle für eine Legende, die Elemente in einer Baumansicht darstellt.
 Der Inhalt der Legende wird über die Funktion *getBausteine* erzeugt, welche die 
 Wurzelelemente der Baumdarstellung liefern. 
 
