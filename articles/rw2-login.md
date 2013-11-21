@@ -9,7 +9,7 @@ Die Herstellung der Verbindung erfolgt durch einen Login-Dialog, der beim Start 
 Rahmenwerksapplikation angezeigt wird und die Möglichkeit bietet, sich mit entsprechend
 gültigen Anmeldedaten mit einem System zu verbinden.
 
-Optional besteht die Möglichkeit das Rahmenwerk auch im Offline-Betrieb zu starten. 
+Optional besteht die Möglichkeit, das Rahmenwerk auch im Offline-Betrieb zu starten. 
 Dabei steht für die Plug-ins in der Regel nur eine eingeschränkte Funktionalität zur 
 Verfügung.
 
@@ -22,7 +22,7 @@ des Rahmenwerks.
 ## Konfiguration des Dialogs
 
 Der Dialog kann in gewissen Grenzen an die Erfordernisse der konkreten Anwendung angepasst
-werden. Die Anpassung erfolgt über Kommandozeilen-Parameter, die den Rahmenwerk beim Start
+werden. Die Anpassung erfolgt über Kommandozeilen-Parameter, die dem Rahmenwerk beim Start
 mitgegeben werden. 
 
 Folgende Optionen sind vorgesehen:
@@ -68,7 +68,7 @@ werden.
 Die durch die Anmeldung hergestellte Datenverteilerverbindung wird allen Komponenten
 des Rahmenwerks über den Service vom Typ *Rahmenwerk* zur Verfügung gestellt.
 
-Der Service bietet auch die Möglichkeit, Änderungen des Verbindungsstatus, d.h. Abmeldungen
+Der Service bietet auch die Möglichkeit, Änderungen des Verbindungsstatus, d. h. Abmeldungen
 und erneute Anmeldungen per Listener zu beobachten.
 
 Detaillierte Informationen dazu finden sich im Kapitel "Services".
