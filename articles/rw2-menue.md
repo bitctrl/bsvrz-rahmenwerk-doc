@@ -15,11 +15,11 @@ verwendbar. Eine softwareseitige Unterstützung wird hierbei noch nicht geboten,
 auf die Intuition und die Intelligenz des Menübearbeiters gesetzt.
 
 Die erstellten Strukturen für Menüs (im weiteren Sinne) werden als Einstellungen
-im Datenverteiler hinterlegt. Damit steht die Möglichkeit zur Verfügung ein Menü
+im Datenverteiler hinterlegt. Damit steht die Möglichkeit zur Verfügung, ein Menü
 individuell für einen bestimmten Nutzer oder individuell für einen lokalen Arbeitsplatz
 zu definieren.
 
-Aktiviert wird das in der folgenden Suchreihenfolge zuerset gefundene Menü:
+Aktiviert wird das in der folgenden Suchreihenfolge zuerst gefundene Menü:
 
 - lokales nutzerspezifisches Menü
 - netzwerkweites nutzerspezifisches Menü
@@ -40,7 +40,7 @@ Ein Editor wird über die jeweilige Schaltfläche (Menü, Toolbar, Statusleiste)
 Ansicht der verfügbaren Elemente geöffnet. Dabei erfolgt die Abfrage welches Menü aus 
 den Einstellungen geladen werden soll.
 
-Wird beim Betätigen der Schaltflächen zum Öffnen eines Editors gleichzeitig die CTRL-Taste
+Wird beim Betätigen der Schaltflächen zum Öffnen eines Editors gleichzeitig die Strg-Taste
 betätigt, wird ein leerer Editor geöffnet.
 
 Die gewünschten Elemente können wie gewohnt per Drag & Drop in das Menü eingefügt und 
