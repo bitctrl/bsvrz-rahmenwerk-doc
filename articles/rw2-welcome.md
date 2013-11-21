@@ -12,8 +12,7 @@ Die Introseite repräsentiert lediglich ein Browserwidget, das mit beliebigem In
 gefüllt werden kann.
 
 Standardmäßig wird die Seite nur einmalig beim Start angezeigt, sofern das nicht
-anders festgelegt wurde, oder wenn beim Starten der Workbench keine Perspektive
-aktiviert wurde.
+anders festgelegt wurde.
 
 ## Konfiguration der Startansicht
 

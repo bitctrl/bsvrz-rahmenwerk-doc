@@ -15,15 +15,49 @@ Ein Plug-in, das Rahmenwerk-Services benötigt installiert eine Komponente, die 
 Services abhängig ist. Die Komponente wird im Rahmen der Initialisierung des OSGI-Frameworks 
 mit den notwendigen Informationen versorgt und aktiviert, wenn alle Voraussetzungen 
 für ihren Betrieb vorliegen.
+
+Eine Komponente besteht aus einer Beschreibungsdatei im xml-Format und einer Implementierung der Klasse, 
+die die die Komponente bildet.
+
+Das im folgende verwendete Beispiel ist unter der URL:
+[https://github.com/upeuker/bsvrz-rahmenwerk-beispiel-statuscontrol](https://github.com/upeuker/bsvrz-rahmenwerk-beispiel-statuscontrol)
+verfügbar.
+
+Die Beschreibungsdatei liegt üblicherweise in einem Unterverzeichnis "OSGI-INF" des Plugin-Projekts.
+
+![Projektstruktur mit Komponente](../assets/komponente_verzeichnis.png) 
+
+Die Beschreibungsdatei kann händisch oder über den Assistenten der Eclipse IDE angelegt werden:
+
+![Kommando für den Assistent zum Anlegen einer Komponente](../assets/komponente_assistent.png) 
+
+Beispielhaft soll hier eine Komponente angelegt werden, die die Services "Rahmenwerk", "Berechtigungen" und "Einstellungen" des Rahmenwerks integriert.
+
+Auf der Startseite des Assistenten werden der Name der Definitionsdatei, ein eindeutiger Name für die Komponente und die implementierende Klasse angegeben.
+
+![Assistent: Komponente deifnieren](../assets/komponente_assi_1.png) 
+
+Nach Abschluss des Assistenten öffnet sich der Editor für die Komponentendatei.
+
+![Assistent: Komponente editieren](../assets/komponente_editor.png) 
+
+Auf Übersichtsseite können mindestens folgende Informationen bearbeitet werden:
+
+- der Name der Komponente 
+- die implementierende Klasse
+- die Namen der Funktionen zum Aktivieren und Deaktivieren der Komponente (Standard: activate, deactivate)
+
+Auf der Seite "Services" werden die erwarteten und veröffentlichten Services definiert, im Beispiel für die drei oben genannten:
+
+![Assistent: Komponente - Services editieren](../assets/komponente_editor_services.png) 
  
-Beispielhaft ist hier die entsprechende Komponente im Plug-in "Migrationssupport" dargestellt, über 
-die alle grundlegenden Services des Rahmenwerks bereitgestellt werden (Datei rahmenwerkservice.xml).
+Die dritte Seite zeigt die Quelle der Definitionsdatei, die wie folgt aussehen sollte:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0"
-                  name="de.bsvrz.buv.rw.compatibility">
-   <implementation class="de.bsvrz.buv.rw.compatibility.internal.RahmenwerkService"/>
+                  name="net.upeuker.bsvrz.buv.sample.statustool.rahmenwerkservice">
+   <implementation class="net.upeuker.bsvrz.buv.sample.statustool.RahmenwerkService"/>
    <reference bind="bindRahmenwerk" cardinality="1..1" 
    			  interface="de.bsvrz.buv.rw.basislib.Rahmenwerk" 
    			  name="Rahmenwerk" policy="static" 
@@ -41,7 +75,7 @@ die alle grundlegenden Services des Rahmenwerks bereitgestellt werden (Datei rah
 </scr:component>
 ```
 
-Der entsprechende Quellcode sieht dann folgendermaßen aus:
+Die Implementierung der Klasse "Rahmenwerkservice" sieht dann folgendermaßen aus:
 
 ```java
 public class RahmenwerkService {
@@ -104,16 +138,19 @@ public class RahmenwerkService {
 }
 ```
 
-Die Komponente muss noch in in der MANIFEST.MF eingebunden werden:
+Implementiert werden müssen in diesem Fall mindestens die Funktionen zum Aktivieren/Deaktivieren 
+der Komponente, sowie die Funktionen zum Binden der erwarteten Services.
+
+Die Komponente muss noch in der MANIFEST.MF eingebunden werden, was beim Anlegen der Komponente über den Assistenten automatisch erfolgt:
 
 ```
     ....
     Service-Component: OSGI-INF/rahmenwerkservice.xml
     ....     
 ```
-
-Für die Definition und Einbindung der Komponenten stehen in der Eclipse-IDE entsprechende Hilfsmittel zur Verfügung!
  
+Das Verzeichnis muss außerdem noch in der Datei build.properties zum Export in den Binary-Build des Plug-ins übernommen werden.
+
 Das Plug-in, das die Komponente installiert, hat damit volle Kontrolle über die Verfügbarkeit 
 der notwendigen Services.   
  
@@ -231,11 +268,11 @@ public interface DavVerbindungsListener {
 ```
 
 ### JOB_FAMILY
-ist die ID für die Job-Familie, deren Beendigung abgewertet wird, bevor die Rahmenwerk-Applikation 
-tatsächlich beendet wird. Damit können Hintergrundprozesse gegebenenfalls noch anstehende
-Arbeiten beenden. 
+Das Eclipse-Framework bietet die Möglichkeit mit Jobs-API Aufgaben im Hintergrund auszuführen.
+Wenn in einem Plug-in ein Hintergrund-Job implementiert wurde, der unbedingt noch beendet werden muss, bevor die gesamte Applikation beendet wird, dann kann dies erreicht werden, indem der Job der hier definierten
+JOB_FAMILY zugeordnet wird.
 
-Um einen Job der Familie zuzuordnen muss die Funktion *belongsTo* implementiert werden, wie 
+Um einen Job der Familie zuzuordnen muss bei der Implementierung des konkreten Jobs die Funktion *belongsTo* implementiert werden, wie 
 nachstehend beispielhaft dargestellt ist:
 
 ```java

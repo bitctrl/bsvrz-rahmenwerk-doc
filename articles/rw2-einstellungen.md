@@ -7,7 +7,7 @@ Das Rahmenwerk bietet die Möglichkeit, Einstellungen die allgemein oder nutzers
 Einstellungen können entweder lokal hinterlegt oder netzwerkweit abgespeichert werden. 
 Zum netzwerkweiten Speichern von Einstellungen werden die Daten in den bisher verwendeten Datenverteiler-Attributgruppen 
 "atg.benutzerEinstellungenOberflächeNetzweit" bzw. "atg.globaleEinstellungenOberflächeNetzweit" abgelegt.
-Die Attributgruppen sind einer Instanz vom Typ "Oberfläche" zugeordnet, der auch die durch den Typ "Autarke Organisationseinheit" 
+Die Attributgruppen sind einer Instanz vom Typ "Oberfläche" zugeordnet, der auch durch den Typ "Autarke Organisationseinheit" 
 erweitert wird.
 
 Potentiell vorgesehen ist die Speicherung von Informationen für folgende Gruppierungen:
