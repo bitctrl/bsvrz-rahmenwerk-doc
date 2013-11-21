@@ -2,7 +2,7 @@
 
 ## Hintergrund
 
-Die Ansicht "Legende" aus dem ursprünglichen Rahmenwerk wurde durch eine Legende ersetzt
+Die Ansicht "Legende" aus dem ursprünglichen Rahmenwerk wurde durch eine Legende ersetzt,
 die als freischwebendes Legenden-Fenster an jeden beliebigen *WorkbenchPart* gekoppelt 
 werden kann.
 
@@ -89,9 +89,9 @@ public interface ILegende {
 
 ## Schnittstelle ICustomLegende
 
-ist die Schnittstelle für eine nicht näher bestimmte nutzerdefinierte Legende.
+Dies ist die Schnittstelle für eine nicht näher bestimmte nutzerdefinierte Legende.
 Der Inhalt der Legende wird über die Funktion *createControl* erzeugt. Es wird 
-lediglich das übergeordnete Composite, das befüllt werden soll übergeben.
+lediglich das übergeordnete Composite, das befüllt werden soll, übergeben.
 
 ```java
 public interface ICustomLegende extends ILegende {
