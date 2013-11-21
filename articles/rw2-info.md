@@ -9,7 +9,7 @@ Diese werden beispielsweise im Titel des Workbenchfensters eingeblendet und kön
 
 Die Ausgabe der Informationen erfolgt über einen Formatstring, in dem die gewünschten
 statischen Informationen per Platzhalter eingebaut sind. Die Platzhalter werden durch
-vordefinierte Kürzel, die in geschweifte Klammern eingebettet sind gebildet.
+vordefinierte Kürzel, die in geschweifte Klammern eingebettet sind, gebildet.
 
 Folgende Platzhalter stehen zur Verfügung:
 
