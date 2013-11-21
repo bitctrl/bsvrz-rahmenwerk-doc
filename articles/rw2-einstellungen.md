@@ -2,7 +2,7 @@
 
 ## Hintergrund
 
-Das Rahmenwerk bietet die Möglichkeit, Einstellungen die allgemein oder nutzerspezifisch gelten zu speichern und wieder abzurufen.
+Das Rahmenwerk bietet die Möglichkeit, Einstellungen, die allgemein oder nutzerspezifisch gelten, zu speichern und wieder abzurufen.
 
 Einstellungen können entweder lokal hinterlegt oder netzwerkweit abgespeichert werden. 
 Zum netzwerkweiten Speichern von Einstellungen werden die Daten in den bisher verwendeten Datenverteiler-Attributgruppen 
@@ -35,7 +35,7 @@ ein Service zur Verfügung, mit dem die erforderlichen Informationen über das R
 ### Allgemeine Funktionalität
 
 Der Service wird beim Start des Rahmenwerk initialisiert und steht damit unmittelbar den Plug-ins, die ihn verwenden 
-wollen zur Verfügung. Der Zugriff auf die Services das Rahmenwerks ist im Kapitel "Rahmenwerk-Services" detailliert beschrieben.
+wollen, zur Verfügung. Der Zugriff auf die Services des Rahmenwerks ist im Kapitel "Rahmenwerk-Services" detailliert beschrieben.
 
 Der Service selbst wird durch folgende Schnittstelle definiert:
 
@@ -111,7 +111,7 @@ Die Funktion entfernt die mit der übergebenen Adresse spezifizierte Einstellung
 
 Die Funktionen ermöglichen die Anmeldung von Listenern, die benachrichtigt werden, wenn sich Einstellungen ändern.
 Optional kann die Anmeldung auf spezielle Typen erfolgen, das ist aber erst dann sinnvoll, wenn Plug-ins auch 
-Factories zum Speichern von Einstellungen, die keine Strings sind implementieren.
+Factories zum Speichern von Einstellungen, die keine Strings sind, implementieren.
 
 Ein Listener für Einstellungen implementiert folgende Schnitstelle: 
 
@@ -187,7 +187,7 @@ erzeugt. Zusätzliche Convenience-Funktionen sind geplant.
 Die Parameter des Konstruktors haben folgende Bedeutung:
 
 #### typ 
-der Objekttyp mit dem Einstellungen abgespeichert werden ist prinzipiell freigestellt und wird mit dem 
+Der Objekttyp, mit dem Einstellungen abgespeichert werden, ist prinzipiell freigestellt und wird mit dem 
 Parameter "typ" übergeben. Standardmäßig werden alle Parameter als "String" abgelegt. 
 Wenn für den Parameter "typ" der Wert *null* übergeben wird, wird der Parametertyp auf "java.lang.String" gesetzt.
 
@@ -196,12 +196,12 @@ und Deserialisierung des Einstellungsobjekts implementiert. Mit dem Rahmenwerk m
 für den Typ "java.lang.String"!
 
 #### id
-die ID unter der die Einstellung innerhalb des Einstellungsspeichers hinterlegt ist. Die Wahl der ID ist nicht weiter festgelegt. 
-Es sollte jedoch beachtet wedren, das die Gültigkeit für das gesamte System besteht und das eine möglichst eindeutige 
+Die ID unter der die Einstellung innerhalb des Einstellungsspeichers hinterlegt ist. Die Wahl der ID ist nicht weiter festgelegt. 
+Es sollte jedoch beachtet werden, dass die Gültigkeit für das gesamte System besteht und dass eine möglichst eindeutige 
 ID gewählt werden sollte bspw. unter Einbeziehung der ID des Plug-ins von dem eine Einstellung verwendet wird.
 
 #### ownerType
-beschreibt, für wen die Einstellung gültig ist. Mit dem enum stehen folgende Werte zur Verfügung:
+Der Parameter beschreibt, für wen die Einstellung gültig ist. Mit dem enum stehen folgende Werte zur Verfügung:
 
 ```
 public enum EinstellungOwnerType {
@@ -214,14 +214,14 @@ public enum EinstellungOwnerType {
 }
 ```
 
-Zu beachten ist, das die Einstellungen für Benutzerklassen (noch) nicht unterstützt werden.
+Zu beachten ist, dass die Einstellungen für Benutzerklassen (noch) nicht unterstützt werden.
 
 #### pid
-ist die PID des Benutzers oder der Benutzerklasse für den die Einstellung gültig ist. für allgemeine Einstellungen
+Der Parameter ist die PID des Benutzers oder der Benutzerklasse für den die Einstellung gültig ist. Für allgemeine Einstellungen
 ist der Wert *null* zu übergeben.
 
 #### location
-ist der Ort, an dem die Einstellung gespeichert werden soll. Mit dem enum stehen folgende Werte zur Verfügung:
+Dieer Parameter ist der Ort, an dem die Einstellung gespeichert werden soll. Mit dem enum stehen folgende Werte zur Verfügung:
 
 ```
 public enum EinstellungLocation {
