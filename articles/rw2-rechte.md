@@ -21,7 +21,7 @@ Oberflächenfunktionen können dynamisch durch die zur Verfügung stehenden API-
 in die Berechtigungsverwaltung des Rahmenwerks integriert werden. 
 Auf welche Art und Weise die Funktionen konkret definiert werden ist durch das Rahmenwerk 
 nicht festgelegt. Es kann sich gleichermaßen um Funktionsdefinitionen im Sourcecode eines 
-entsprechenden Plug-Ins handeln, wie um Definitionen über Extension-Points 
+entsprechenden Plug-ins handeln, wie um Definitionen über Extension-Points 
 oder externe Konfigurationsdateien.
 
 **Zu bevorzugen ist jedoch die Definition von ExtensionPoints!**
@@ -39,7 +39,7 @@ geforderten Eigenschaften (TBuV-103/104) wie folgt realisiert:
 - **Wie?** - entspricht der Festlegung Freigabe/Sperrung
 - **Worauf?** - wird nicht direkt abgebildet sondern bei Bedarf durch mehrere Oberflächenfunktionen 
    umgesetzt, d.h. statt der Definition einer einzelnen Funktion mit Beschränkungen auf jeweils ein 
-   Bedienelement eines Plug-Ins definiert das Plug-In zwei Funktionen, die individuell mit Rechte versehen werden können.
+   Bedienelement eines Plug-ins definiert das Plug-in zwei Funktionen, die individuell mit Rechte versehen werden können.
 - **Ausnahmen?** - auf Ausnahmen im eigentlichen Sinne wird verzichtet, die Zuordnungen 
    Benutzerklasse-Funktion sind eindeutig, Wildcards für Funktionen werden nach
    vorgegebenen Regeln verrechnet.
@@ -66,12 +66,12 @@ Die Einträge des Datensatzes mit den Oberflächenberechtigungen erfolgt nach fo
   bzw. wie eine Funktion behandelt
 - Jede Kombination aus Berechtigungsklasse und Funktion darf nur einmal vorkommen, Duplikate
   werden ignoriert, ein Eintrag mit *Sperrung* hat dabei immer Vorrang
-- die Prüfung ob eine Funktion für einen Benutzer freigegeben ist erfolgt in der nachstehenden
+- die Prüfung, ob eine Funktion für einen Benutzer freigegeben ist, erfolgt in der nachstehenden
   Reihenfolge:
-  - es existiert ein konkreter Eintrag *Klasse/Funktion* dann gilt dessen Freigabewert
-  - es existiert ein Eintrag *Klasse/Alle-Funktionen (Wildcard)* dann gilt dessen Freigabewert 
-  - es existiert ein Eintrag *Alle Klassen (Wildcard)/Funktion* dann gilt dessen Freigabewert 
-  - es existiert ein Eintrag *Alle Klassen (Wildcard)/Alle-Funktionen (Wildcard)* dann gilt dessen Freigabewert 
+  - es existiert ein konkreter Eintrag *Klasse/Funktion*, dann gilt dessen Freigabewert
+  - es existiert ein Eintrag *Klasse/Alle-Funktionen (Wildcard)*, dann gilt dessen Freigabewert 
+  - es existiert ein Eintrag *Alle Klassen (Wildcard)/Funktion*, dann gilt dessen Freigabewert 
+  - es existiert ein Eintrag *Alle Klassen (Wildcard)/Alle-Funktionen (Wildcard)*, dann gilt dessen Freigabewert 
   - die Funktion ist nicht freigegeben
    
 
@@ -107,12 +107,12 @@ abgebildet. Die aus Kompatibilitätsgründen händisch (nicht per ExtensionPoint
 Funktionen werden unter dem Abschnitt *Plugin nicht bekannt* versammelt.
 Ebenso wie bei den Berechtigungsklassen, werden Einträge aus dem Parameterdatensatz per 
 ID hinzugefügt und mit einem "*" markiert (beispielsweise wenn ein Plug-in, das die entsprechende
-Funktion bereitstellt momentan nicht verfügbar ist.
+Funktion bereitstellt, momentan nicht verfügbar ist.
 
 Die erste Spalte der Matrix *Alle Berechtigungsklassen" und die erste Zeile *Alle Funktionen*
 stehen für die Wildcards, die die Ursache für die Vererbung bilden.
 
-So genügt es beispielsweise einer Klasse per Wildcard alle Funktionen freizugeben, damit sind
+So genügt es beispielsweise, einer Klasse per Wildcard alle Funktionen freizugeben, damit sind
 automatisch auch alle Funktionen freigegeben, die erst später durch Installation von Plug-ins
 hinzugefügt werden, ohne dass ein neuer Eingriff erforderlich ist 
 (siehe *Root* mit einer pauschalen Freigabe oder "Kein Zugriff* mit einer pauschalen Sperrung).
@@ -136,7 +136,7 @@ werden. Die Umschaltung erfolgt immer zwischen:
 - Vererbung (der Wert ergibt sich aus dem aktuellen Status der übrigen Matrix)
 
 Gespeichert wird über die im Menü eingebundene Speicherfunktion oder den bekannten
-Hot-Key Strg-S.
+Hot-Key Strg+S.
  
 
 ### Ansicht *Aktuelle Berechtigungen*
@@ -191,7 +191,7 @@ public interface Berechtigungen {
 Folgende Funktionsgruppen werden zur Verfügung gestellt.
 
 #### add/removeOberflaechenFunktion
-Die Funktionen dienen dazu Berechtigungsfunktionen zur internen Berechtigungsverwaltung
+Die Funktionen dienen dazu, Berechtigungsfunktionen zur internen Berechtigungsverwaltung
 des Rahmenwerks hinzuzufügen bzw. zu entfernen.
 
 Diese Funktionalität besteht im Wesentlichen aus Kompatibilitätsgründen. Zu bevorzugen ist
@@ -199,11 +199,11 @@ die Definition von ExtensionPoints durch die Plug-ins, die Berechtigungsfunktion
 Rahmenwerk-Applikation einbringen wollen. 
 
 #### getFunktion/en
-liefert alle bzw. durch die ID festgelegte Funktionen aus der Berechtigungsverwaltung des
+Die Funktionen liefern alle bzw. durch die ID festgelegte Funktionen aus der Berechtigungsverwaltung des
 Rahmenwerks.
 
 #### hasBerechtigung
-prüft, ob die Berechtigung für eine übergebene Berechtigungsfunktion besteht.
+Die Funktion prüft, ob die Berechtigung für eine übergebene Berechtigungsfunktion besteht.
 
 Für die Prüfung der Berechtigungen wird geprüft, ob eine der Berechtigungsklassen, der der
 Nutzer zugeordnet ist eine Freigabe für die übergebene Funktion besitzt.
@@ -212,7 +212,7 @@ Nutzer zugeordnet ist eine Freigabe für die übergebene Funktion besitzt.
 alte Berechtigungskonzept verwendet wird.**
   
 #### Listener-Funktionen
-melden Listener an/ab, die über Änderungen in der Berechtigungsverwaltung allgemein oder
+Diese Funktionen melden Listener an/ab, die über Änderungen in der Berechtigungsverwaltung allgemein oder
 für bestimmte Berechtigungsfunktionen benachrichtigt werden sollen.
 
 ### FunktionMitBerechtigung
@@ -234,11 +234,11 @@ Eine Berechtigungsfunktion ist durch die im Konstruktor übergebenen Attribute d
 
 - **pluginId** die ID des Plug-ins in der die Funktion angelegt wird
 - **kategorie** eine optionale Kategorie, die nur zu Anzeigezwecken verwendet wird
-- **id** die eindeutige ID der Funktion (wird mit der Plug-Id erweitert!) 
+- **id** die eindeutige ID der Funktion (wird mit der Plug-in-ID erweitert!) 
 - **bezeichnung** der Name der Funktion
 - **beschreibung** ein optionaler Beschreibungstext für die Funktion
 
-Die in der Berechtigungsverwaltung verwendete Id ergibt sich aus *<pluginid>.<id>*!
+Die in der Berechtigungsverwaltung verwendete ID ergibt sich aus *<pluginid>.<id>*!
 
 
 
@@ -298,14 +298,14 @@ repräsentiert.
 
 Eine Extension "function" wird durch die Attribute:
 
-- **id** die eindeutige ID der Funktion (wird mit der Plug-Id erweitert!) 
+- **id** die eindeutige ID der Funktion (wird mit der Plug-in-ID erweitert!) 
 - **bezeichung** die Bezeichnung der Funktion
 - **kategorie** die optionale Kategorie
 - **beschreibung** die optionale Beschreibung
 
 definiert.
 
-Die in der Berechtigungsverwaltung verwendete Id ergibt sich aus *<pluginid>.<id>*!
+Die in der Berechtigungsverwaltung verwendete ID ergibt sich aus *<pluginid>.<id>*!
 
 Eine auf diese Weise angelegte Berechtigungsfunktion wird vom Rahmenwerk automatisch initialisiert und
 der Berechtigungsverwaltung zugeordnet.
