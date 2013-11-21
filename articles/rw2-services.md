@@ -11,7 +11,7 @@ Der Zugriff auf die Services kann auf verschiedenen Wegen erfolgen:
 
 ### Service-Komponente
 
-Ein Plug-in, das Rahmenwerk-Services benötigt installiert eine Komponente, die von den entsprechenden 
+Ein Plug-in, das Rahmenwerk-Services benötigt, installiert eine Komponente, die von den entsprechenden 
 Services abhängig ist. Die Komponente wird im Rahmen der Initialisierung des OSGI-Frameworks 
 mit den notwendigen Informationen versorgt und aktiviert, wenn alle Voraussetzungen 
 für ihren Betrieb vorliegen.
@@ -171,8 +171,8 @@ public Rahmenwerk getRahmenwerk() {
 
      
 Zu beachten ist dabei, dass der Zugriff auf die Services auf diesem Weg erst erfolgen kann, 
-wenn das Plug-in aktiviert wurde. Insbesondere sollten keine Klassen die über ExtensionPoints 
-instantiiert werden auf die Services zurückgreifen.
+wenn das Plug-in aktiviert wurde. Insbesondere sollten keine Klassen, die über ExtensionPoints 
+instantiiert werden, auf die Services zurückgreifen.
 
 ### Zugriff über Dependency Injection
 
@@ -181,11 +181,11 @@ die integraler Bestandteil der E4 Platform ist.
 
 Da jedoch auf Grund des aktuellen Status der E4 Komponenten und Entwicklungswerkzeuge, sowie im 
 Hinblick auf die möglichst hohe Kompatibilität der bestehenden BuV-Software-Komponenten, entschieden
-wurde die Eclipse RCP Platform im Kompatibilitätsmodus zu Eclipse 3 zu betreiben, stehen die 
+wurde, die Eclipse RCP Platform im Kompatibilitätsmodus zu Eclipse 3 zu betreiben, stehen die 
 entsprechenden Möglichkeiten nicht vollumfänglich zur Verfügung.
 
-Prinzipiell ist es jedoch möglich neue Plug-ins und Komponenten als Erweiterung des vorhandenen
-Applikationsmodell als reine E4 modellbasierte Bestandteile zu integrieren oder alternativ die
+Prinzipiell ist es jedoch möglich, neue Plug-ins und Komponenten als Erweiterung des vorhandenen
+Applikationsmodells als reine E4 modellbasierte Bestandteile zu integrieren oder alternativ die
 Eclipse3-Bridge aus dem E4-Tools-Projekt einzusetzen, um die Möglichkeiten des Dependency Injection-Mechanismus
 zu verwenden.
 
@@ -226,12 +226,12 @@ public interface Rahmenwerk {
 ```
 
 ### isOnline und getDavVerbindung
-dient zur Überprüfung und zum Ermitteln der potentiell vorhandenen Datenverteilerverbindung.
+Die beiden Methoden dienen zur Überprüfung und zum Ermitteln der potentiell vorhandenen Datenverteilerverbindung.
 Der Service bietet außerdem die Möglichkeit, sich für die Benachrichtigung über den Zustandswechsel 
 der Datenverteilerverbindung zu registrieren. 
 
 ### add/removeDavVerbindungsListener
-dient zur Anmeldung eines Listeners, der über den Status der Datenverteilerverbindung des
+Die Methode dient zur Anmeldung eines Listeners, der über den Status der Datenverteilerverbindung des
 Rahmenwerks informiert wird.
 
 ```java
@@ -268,11 +268,11 @@ public interface DavVerbindungsListener {
 ```
 
 ### JOB_FAMILY
-Das Eclipse-Framework bietet die Möglichkeit mit Jobs-API Aufgaben im Hintergrund auszuführen.
+Das Eclipse-Framework bietet die Möglichkeit, mit der Jobs-API Aufgaben im Hintergrund auszuführen.
 Wenn in einem Plug-in ein Hintergrund-Job implementiert wurde, der unbedingt noch beendet werden muss, bevor die gesamte Applikation beendet wird, dann kann dies erreicht werden, indem der Job der hier definierten
 JOB_FAMILY zugeordnet wird.
 
-Um einen Job der Familie zuzuordnen muss bei der Implementierung des konkreten Jobs die Funktion *belongsTo* implementiert werden, wie 
+Um einen Job der Familie zuzuordnen, muss bei der Implementierung des konkreten Jobs die Funktion *belongsTo* implementiert werden, wie 
 nachstehend beispielhaft dargestellt ist:
 
 ```java
@@ -285,7 +285,7 @@ public boolean belongsTo(final Object family) {
 Die Blockierung des Rahmenwerks ist nur bedingt sicher, ein "forced" -Abbruch ist jederzeit möglich!      
 
 ### getXXX-Funktionen
-die Funktionen liefern spezielle Informationen zur Rahmenwerk-Applikation:
+Die get-Funktionen liefern spezielle Informationen zur Rahmenwerk-Applikation:
 
 - die übergebenen Kommandozeilen-Argumente
 - den Name des angemeldeten Benutzers im Online-Betrieb
