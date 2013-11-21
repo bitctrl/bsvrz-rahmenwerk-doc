@@ -3,8 +3,8 @@ Urlasserdialog
 
 ## Hintergrund
 
-Der Urlasserdialog dient dazu ausgewählte Aktionen mit Anmeldedaten eines Nutzers zu
-verifizieren. Der Nutzer der über den Urlasserdialog authentifiziert wird, muss nicht 
+Der Urlasserdialog dient dazu, ausgewählte Aktionen mit Anmeldedaten eines Nutzers zu
+verifizieren. Der Nutzer, der über den Urlasserdialog authentifiziert wird, muss nicht 
 der aktuell angemeldete Nutzer sein. Gegebenenfalls wird eine neue Datenverteilerverbindung 
 für den abweichenden Nutzer erzeugt, über die dann die mit dem Urlasserdialog verknüpften 
 Operationen ausgeführt werden, damit das Berechtigungskonzept des Datenverteilers an
@@ -44,7 +44,7 @@ werden sollen, müssen von der im Konstruktor übergebenen Instanz des *Urlasser
 Eine Instanz dieser Klasse übernimmt die mit einem Urlasserdialog potentiell erzeugte 
 oder die aktuelle Datenverteilerverbindung und führt die mit dem Urlasserdialog 
 verbundenen Operationen in Bezug zum Datenverteiler aus. Die Ausführung der Operationen
-blockiert den Dialog, d.h. er wird erst nach Abschluss aller Operationen des Datensenders 
+blockiert den Dialog, d. h. er wird erst nach Abschluss aller Operationen des Datensenders 
 geschlossen und die Verbindung wird abgebaut.
 
 Die übergebene Klasse muss eine Instanz der folgenden Schnittstelle sein:
