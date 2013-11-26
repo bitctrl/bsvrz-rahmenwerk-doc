@@ -34,7 +34,7 @@ ein Service zur Verfügung, mit dem die erforderlichen Informationen über das R
 
 ### Allgemeine Funktionalität
 
-Der Service wird beim Start des Rahmenwerk initialisiert und steht damit unmittelbar den Plug-ins, die ihn verwenden 
+Der Service wird beim Start des Rahmenwerks initialisiert und steht damit unmittelbar den Plug-ins, die ihn verwenden 
 wollen, zur Verfügung. Der Zugriff auf die Services des Rahmenwerks ist im Kapitel "Rahmenwerk-Services" detailliert beschrieben.
 
 Der Service selbst wird durch folgende Schnittstelle definiert:
@@ -221,7 +221,7 @@ Der Parameter ist die PID des Benutzers oder der Benutzerklasse für den die Ein
 ist der Wert *null* zu übergeben.
 
 #### location
-Dieer Parameter ist der Ort, an dem die Einstellung gespeichert werden soll. Mit dem enum stehen folgende Werte zur Verfügung:
+Dieser Parameter ist der Ort, an dem die Einstellung gespeichert werden soll. Mit dem enum stehen folgende Werte zur Verfügung:
 
 ```
 public enum EinstellungLocation {
