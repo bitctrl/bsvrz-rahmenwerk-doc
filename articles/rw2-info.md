@@ -13,12 +13,12 @@ vordefinierte Kürzel, die in geschweifte Klammern eingebettet sind, gebildet.
 
 Folgende Platzhalter stehen zur Verfügung:
 
-- **{user}** für den Name des angemeldeten Benutzers
+- **{user}** für den Namen des angemeldeten Benutzers
 - **{userpid}** für die PID des angemeldeten Benutzers
-- **{host}**  für den Hostname aus der Datenverteileranmeldung
+- **{host}**  für den Hostnamen aus der Datenverteileranmeldung
 - **{port}**  für den Port aus der Datenverteileranmeldung
 - **{simvar}** für die eingestellte Standardsimulationsvariante
-- **{aoe}** für den Name der verwendeten AOE
+- **{aoe}** für den Namen der verwendeten AOE
 - **{aoepid}** für die PID der verwendeten AOE
 - **{version}** für die Versionsnummer der Rahmenwerksoftware
 
