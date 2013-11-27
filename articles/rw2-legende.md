@@ -3,7 +3,7 @@
 ## Hintergrund
 
 Die Ansicht "Legende" aus dem ursprünglichen Rahmenwerk wurde durch eine Legende ersetzt,
-die als freischwebendes Legenden-Fenster an jeden beliebigen *WorkbenchPart* gekoppelt 
+die als frei schwebendes Legenden-Fenster an jeden beliebigen *WorkbenchPart* gekoppelt 
 werden kann.
 
 Die Legende wird über ein vom Rahmenwerk bereitgestelltes Kommando durch den Nutzer
