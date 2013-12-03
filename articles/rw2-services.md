@@ -304,116 +304,134 @@ Der Service wird durch eine Instanz der Schnittstelle *Einstellungen* implementi
 ```java
 public interface Einstellungen {
 
-    /**
-     * liefert die für die übergebene Adresse vorliegende Einstellung.
-     * 
-     * @param adresse
-     *            die Adresse
-     * @return das Einstellungsobjekt
-     * @throws IOException
-     *             die Einstellung konnte nicht gelesen werden
-     */
-    Object getValue(final EinstellungsAdresse adresse) throws IOException;
+	/**
+	 * liefert eine Menge der ID für die Einstellungen mit den zugehöriegn
+	 * Typen, die für den angegebenen SpeicherKey im Einstellungsspeicher
+	 * verfügbar sind.
+	 * 
+	 * Der Schlüssel in der Map entspricht der Id der jeweiligen Einstellung,
+	 * der Wert entspricht dem Typ. Der Typ kann <code>null</code> sein, dann
+	 * wird für diesen der Standard-Typ java.lang.String verwendet.
+	 * 
+	 * @param key
+	 *            der Schlüssel für den Einstellungsspeicher
+	 * @return das Liste der Id
+	 * @throws IOException
+	 *             die Einstellung konnte nicht gelesen werden
+	 */
+	Map<String, String> getEinstellungsId(SpeicherKey key) throws IOException;
 
-    /**
-     * setzt für die übergebene Adresse die angegebene Einstellung.
-     * 
-     * @param adresse
-     *            die Adresse
-     * @param einstellung
-     *            das Einstellungsobjekt
-     * @throws IOException
-     *             die Einstellung konnte nicht gelesen werden
-     */
-    void setValue(final EinstellungsAdresse adresse, final Object einstellung)
-                throws IOException;
+	/**
+	 * liefert die für die übergebene Adresse vorliegende Einstellung.
+	 * 
+	 * @param adresse
+	 *            die Adresse
+	 * @return das Einstellungsobjekt
+	 * @throws IOException
+	 *             die Einstellung konnte nicht gelesen werden
+	 */
+	Object getValue(final EinstellungsAdresse adresse) throws IOException;
 
-    /**
-     * setzt für die übergebene Adresse die angegebene Einstellung mit den
-     * übergebenen Urlasserinformationen.
-     * 
-     * @param adresse
-     *            die Adresse
-     * @param einstellung
-     *            das Einstellungsobjekt
-     * @param urlasser
-     *            die Urlasserinformationen
-     * @throws IOException
-     *             die Einstellung konnte nicht gelesen werden
-     */
-    void setValue(final EinstellungsAdresse adresse, final Object einstellung,
-                final UrlasserInfo urlasser) throws IOException;
+	/**
+	 * setzt für die übergebene Adresse die angegebene Einstellung.
+	 * 
+	 * @param adresse
+	 *            die Adresse
+	 * @param einstellung
+	 *            das Einstellungsobjekt
+	 * @throws IOException
+	 *             die Einstellung konnte nicht gelesen werden
+	 */
+	void setValue(final EinstellungsAdresse adresse, final Object einstellung)
+			throws IOException;
 
-    /**
-     * entfernt die unter der übergebenen Adresse hinterlegten Einstellungen.
-     * 
-     * @param adresse
-     *            die Adresse
-     */
-    void removeValue(EinstellungsAdresse adresse);
+	/**
+	 * setzt für die übergebene Adresse die angegebene Einstellung mit den
+	 * übergebenen Urlasserinformationen.
+	 * 
+	 * @param adresse
+	 *            die Adresse
+	 * @param einstellung
+	 *            das Einstellungsobjekt
+	 * @param urlasser
+	 *            die Urlasserinformationen
+	 * @throws IOException
+	 *             die Einstellung konnte nicht gelesen werden
+	 */
+	void setValue(final EinstellungsAdresse adresse, final Object einstellung,
+			final UrlasserInfo urlasser) throws IOException;
 
-    /**
-     * fügt einen Listener hinzu, der über Änderungen von Einstellungen
-     * informiert wird.
-     * 
-     * @param listener
-     *            der Listener
-     */
-    void addEinstellungsListener(final EinstellungChangeListener listener);
-    
-    /**
-     * fügt einen Listener hinzu, der über Änderungen von Einstellungen der
-     * angegebenen Kategorie informiert wird.
-     * 
-     * @param listener
-     *            der Listener
-     * @param category
-     *            die Kategorie
-     */
-    void addEinstellungsListener(final EinstellungChangeListener listener,
-                final String category);
+	/**
+	 * entfernt die unter der übergebenen Adresse hinterlegten Einstellungen.
+	 * 
+	 * @param adresse
+	 *            die Adresse
+	 */
+	void removeValue(EinstellungsAdresse adresse);
 
-    /**
-     * entfernt einen Listener, der über Änderungen der Einstellungen informiert
-     * wurde.
-     * 
-     * @param listener
-     *            der Listener
-     */
-    void removeEinstellungsListener(final EinstellungChangeListener listener);
+	/**
+	 * fügt einen Listener hinzu, der über Änderungen von Einstellungen
+	 * informiert wird.
+	 * 
+	 * @param listener
+	 *            der Listener
+	 */
+	void addEinstellungsListener(final EinstellungChangeListener listener);
 
-    /**
-     * entfernt einen Listener, der über Änderungen der Einstellungen in der
-     * angegebenen Kategorie informiert wurde.
-     * 
-     * @param listener
-     *            der Listener
-     * @param category
-     *            die Kategorie
-     */
-    void removeEinstellungsListener(final EinstellungChangeListener listener,
-                final String category);
+	/**
+	 * fügt einen Listener hinzu, der über Änderungen von Einstellungen der
+	 * angegebenen Kategorie informiert wird.
+	 * 
+	 * @param listener
+	 *            der Listener
+	 * @param category
+	 *            die Kategorie
+	 */
+	void addEinstellungsListener(final EinstellungChangeListener listener,
+			final String category);
 
-    /**
-     * fügt einen Listener hinzu, der über die Verfügbarkeit des
-     * Einstellungsspeichers informiert wird.
-     * 
-     * @param listener
-     *            der Listener
-     */
-    void addEinstellungsAvailabilityListener(
-                final EinstellungAvailabilityListener listener);
+	/**
+	 * entfernt einen Listener, der über Änderungen der Einstellungen informiert
+	 * wurde.
+	 * 
+	 * @param listener
+	 *            der Listener
+	 */
+	void removeEinstellungsListener(final EinstellungChangeListener listener);
 
-    /**
-     * entfernt einen Listener, der über die Verfügbarkeit des
-     * Einstellungsspeichers informiert wird.
-     * 
-     * @param listener
-     *            der Listener
-     */
-    void removeEinstellungsAvailabilityListener(
-                final EinstellungAvailabilityListener listener);
+	/**
+	 * entfernt einen Listener, der über Änderungen der Einstellungen in der
+	 * angegebenen Kategorie informiert wurde.
+	 * 
+	 * @param listener
+	 *            der Listener
+	 * @param category
+	 *            die Kategorie
+	 */
+	void removeEinstellungsListener(final EinstellungChangeListener listener,
+			final String category);
+
+	/**
+	 * fügt einen Listener hinzu, der über die Verfügbarkeit des
+	 * Einstellungsspeichers informiert wird.
+	 * 
+	 * @param listener
+	 *            der Listener
+	 */
+	void addEinstellungsAvailabilityListener(
+			final EinstellungAvailabilityListener listener);
+
+	/**
+	 * entfernt einen Listener, der über die Verfügbarkeit des
+	 * Einstellungsspeichers informiert wird.
+	 * 
+	 * @param listener
+	 *            der Listener
+	 */
+	void removeEinstellungsAvailabilityListener(
+			final EinstellungAvailabilityListener listener);
 }
+
 ```
 
 Eine detaillierte Beschreibung des Zugriffs auf die Einstellungen erfolgt in einem gesonderten Kapitel. 
