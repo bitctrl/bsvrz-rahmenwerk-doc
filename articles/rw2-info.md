@@ -15,6 +15,7 @@ Folgende Platzhalter stehen zur Verfügung:
 
 - **{user}** für den Namen des angemeldeten Benutzers
 - **{userpid}** für die PID des angemeldeten Benutzers
+- **{userclass}** die Nutzerklasse des angemeldeten Benutzers
 - **{host}**  für den Hostnamen aus der Datenverteileranmeldung
 - **{port}**  für den Port aus der Datenverteileranmeldung
 - **{simvar}** für die eingestellte Standardsimulationsvariante
