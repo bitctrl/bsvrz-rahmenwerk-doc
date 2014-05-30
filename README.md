@@ -3,6 +3,8 @@ bsvrz-rahmenwerk-doc
 
 Artikel und Beiträge zur Dokumentation des NERZ-Rahmenwerk 2.0
 
+Die Quellen der Artikel finden sich auf Github unter den folgenden Links:
+
 - [Services](https://github.com/bitctrl/bsvrz-rahmenwerk-doc/blob/master/articles/rw2-services.md)
 - [Einstellungen](https://github.com/bitctrl/bsvrz-rahmenwerk-doc/blob/master/articles/rw2-einstellungen.md)
 - [Berechtigungen](https://github.com/bitctrl/bsvrz-rahmenwerk-doc/blob/master/articles/rw2-rechte.md)
