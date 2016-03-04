@@ -113,6 +113,11 @@ public interface RwMenuControl extends IContributionItem {
 implementieren und als *control* in einem ExtensionPoint vom Typ 
 *de.bsvrz.buv.rw.rw.toolbarcontrol* in das System integriert werden.
 
+## Bereits vorhandene Statusleistenelemente
 
-
+Folgende Statusleistenelemente sind bereits im Rahmenwerk enthalten:
+ - Aktuelle Zeit
+ - ![Rahmenwerk-Info](rw2-info.md)
+ - Archivstatus
+ - Benutzerstatus
  
