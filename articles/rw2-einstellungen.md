@@ -280,3 +280,24 @@ public interface EinstellungsFactory {
     
 Die mit der Funktion *getTyp* gelieferte ID muss dann beim Lesen und Schreiben der Einstellung dem in
 der *Einstellungsadresse* angegebenen Typ entsprechen. 
+
+## Eclipse Preferences
+
+Zum Speichern von Eclipse Preferences in den Benutzereinstellungen wird das *RahmenwerkPreferenceStore* verwendet.
+
+Beispiel für die Einbindung des *RahmenwerkPreferenceStore*s in einem Plugin-Activator:
+
+```java
+public class Activator extends AbstractUIPlugin {
+...
+	private RahmenwerkPreferenceStore preferenceStore;
+...	
+	public IPreferenceStore getPreferenceStore() {
+		// Create the preference store lazily.
+		if (preferenceStore == null) {
+			preferenceStore = RahmenwerkPreferenceStore.SYSTEM_NETZWERKWEIT;
+		}
+		return preferenceStore;
+	}
+}
+```
