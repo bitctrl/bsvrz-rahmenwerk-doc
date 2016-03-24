@@ -283,7 +283,11 @@ der *Einstellungsadresse* angegebenen Typ entsprechen.
 
 ## Eclipse Preferences
 
-Zum Speichern von Eclipse Preferences in den Benutzereinstellungen wird das *RahmenwerkPreferenceStore* verwendet.
+Zum Speichern von Eclipse Preferences in den Benutzereinstellungen wird das *RahmenwerkPreferenceStore* verwendet. Die Klasse *RahmenwerkPreferenceStore* stellt die konkreten Implementierungen für verschiedene *PreferenceStore*s als Singleton zur Verfügung:
+* RahmenwerkPreferenceStore.SYSTEM_NETZWERKWEIT
+* RahmenwerkPreferenceStore.SYSTEM_LOKAL
+* RahmenwerkPreferenceStore.BENUTZER_NETZWERKWEIT
+* RahmenwerkPreferenceStore.BENUTZER_LOKAL
 
 Beispiel für die Einbindung des *RahmenwerkPreferenceStore*s in einem Plugin-Activator:
 
