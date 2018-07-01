@@ -1,3 +1,8 @@
+**Die Artikel wurden in das Github-Page-Projekt [https://github.com/upeuker/nerz-posts](https://github.com/upeuker/nerz-posts) übernommen, um eine einfachere Pflege-Erweiterung und Veröffentlichung zu ermöglichen.**
+
+**Die Seite ist unter [https://upeuker.github.io/nerz-posts/](https://upeuker.github.io/nerz-posts/) erreichbar.**
+
+
 bsvrz-rahmenwerk-doc
 ====================
 
