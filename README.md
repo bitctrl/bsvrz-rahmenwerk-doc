@@ -1,23 +1,19 @@
-**Die Artikel wurden in das Github-Page-Projekt [https://github.com/upeuker/nerz-posts](https://github.com/upeuker/nerz-posts) übernommen, um eine einfachere Pflege-Erweiterung und Veröffentlichung zu ermöglichen.**
-
-**Die Seite ist unter [https://upeuker.github.io/nerz-posts/](https://upeuker.github.io/nerz-posts/) erreichbar.**
-
 
 bsvrz-rahmenwerk-doc
 ====================
 
-Artikel und Beiträge zur Dokumentation des NERZ-Rahmenwerk 2.0
+Artikel und Beiträge zur Dokumentation des NERZ-Rahmenwerk 3.4
 
 Die Quellen der Artikel finden sich auf Github unter den folgenden Links:
 
-- [Services](https://github.com/bitctrl/bsvrz-rahmenwerk-doc/blob/master/articles/rw2-services.md)
-- [Einstellungen](https://github.com/bitctrl/bsvrz-rahmenwerk-doc/blob/master/articles/rw2-einstellungen.md)
-- [Berechtigungen](https://github.com/bitctrl/bsvrz-rahmenwerk-doc/blob/master/articles/rw2-rechte.md)
-- [Anmeldung](https://github.com/bitctrl/bsvrz-rahmenwerk-doc/blob/master/articles/rw2-login.md)
-- [Urlasserdialog](https://github.com/bitctrl/bsvrz-rahmenwerk-doc/blob/master/articles/rw2-urlasserdialog.md)
-- [Menüs und Toolbars](https://github.com/bitctrl/bsvrz-rahmenwerk-doc/blob/master/articles/rw2-menue.md)
-- [Welcome](https://github.com/bitctrl/bsvrz-rahmenwerk-doc/blob/master/articles/rw2-welcome.md)
-- [Informationsanzeige](https://github.com/bitctrl/bsvrz-rahmenwerk-doc/blob/master/articles/rw2-info.md)
-- [Standardlegende](https://github.com/bitctrl/bsvrz-rahmenwerk-doc/blob/master/articles/rw2-legende.md)
-- [Simulation](https://github.com/bitctrl/bsvrz-rahmenwerk-doc/blob/master/articles/rw2-simulation.md)
-- [Migrationshinweise](https://github.com/bitctrl/bsvrz-rahmenwerk-doc/blob/master/articles/rw2-migration.md)
+- [Services](https://github.com/bitctrl/bsvrz-rahmenwerk-doc/blob/master/articles/rw-services.md)
+- [Einstellungen](https://github.com/bitctrl/bsvrz-rahmenwerk-doc/blob/master/articles/rw-einstellungen.md)
+- [Berechtigungen](https://github.com/bitctrl/bsvrz-rahmenwerk-doc/blob/master/articles/rw-rechte.md)
+- [Anmeldung](https://github.com/bitctrl/bsvrz-rahmenwerk-doc/blob/master/articles/rw-login.md)
+- [Urlasserdialog](https://github.com/bitctrl/bsvrz-rahmenwerk-doc/blob/master/articles/rw-urlasserdialog.md)
+- [Menüs und Toolbars](https://github.com/bitctrl/bsvrz-rahmenwerk-doc/blob/master/articles/rw-menue.md)
+- [Welcome](https://github.com/bitctrl/bsvrz-rahmenwerk-doc/blob/master/articles/rw-welcome.md)
+- [Informationsanzeige](https://github.com/bitctrl/bsvrz-rahmenwerk-doc/blob/master/articles/rw-info.md)
+- [Standardlegende](https://github.com/bitctrl/bsvrz-rahmenwerk-doc/blob/master/articles/rw-legende.md)
+- [Simulation](https://github.com/bitctrl/bsvrz-rahmenwerk-doc/blob/master/articles/rw-simulation.md)
+- [Migrationshinweise](https://github.com/bitctrl/bsvrz-rahmenwerk-doc/blob/master/articles/rw-migration.md)
