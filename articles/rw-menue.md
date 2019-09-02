@@ -36,12 +36,11 @@ Menüs verfügbaren Elementen und dem Bereich für Editoren besteht.
 
 ![Menü-Editor-Perspektive](../assets/menu_editor.png)
 
-Ein Editor wird über die jeweilige Schaltfläche (Menü, Toolbar, Statusleiste) in der 
-Ansicht der verfügbaren Elemente geöffnet. Dabei erfolgt die Abfrage welches Menü aus 
-den Einstellungen geladen werden soll.
+Ein neues Menü wir mit der Aktion "Neues Menü anlegen" im Menü Navigator angelegt. Es öffnet sich ein Assistent zum Anlegen eines neuen Menüs.
 
-Wird beim Betätigen der Schaltflächen zum Öffnen eines Editors gleichzeitig die Strg-Taste
-betätigt, wird ein leerer Editor geöffnet.
+Ein Editor wird über die Aktion "Menü bearbeiten" im Menü Navigator Elemente geöffnet.
+
+Auch der Export und der Import von Menüs wird mit den entsprechenden Aktionen im Menü Navigator realisiert. 
 
 Die gewünschten Elemente können wie gewohnt per Drag & Drop in das Menü eingefügt und 
 dort angeordnet werden. Untermenüs werden per Kontextmenü-Funktion im Editor erzeugt.
@@ -117,7 +116,7 @@ implementieren und als *control* in einem ExtensionPoint vom Typ
 
 Folgende Statusleistenelemente sind bereits im Rahmenwerk enthalten:
  - Aktuelle Zeit
- - ![Rahmenwerk-Info](rw2-info.md)
+ - ![Rahmenwerk-Info](rw-info.md)
  - Archivstatus
  - Benutzerstatus
  
