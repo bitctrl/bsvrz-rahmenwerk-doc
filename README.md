@@ -2,6 +2,8 @@
 bsvrz-rahmenwerk-doc
 ====================
 
+**!! Dieses Projekt wurde als Dokumentation in das NERZ Rahmenwerk (https://gitlab.nerz-ev.de/ERZ/RW_de.bsvrz.buv.rw ) integriert und wird dort weitergepflegt !!**
+
 Artikel und Beiträge zur Dokumentation des NERZ-Rahmenwerk 3.4
 
 Die Quellen der Artikel finden sich auf Github unter den folgenden Links:
